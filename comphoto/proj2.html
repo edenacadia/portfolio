@@ -1,0 +1,193 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Solid State by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Eden McEwen</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="research.html">Research</a></li>
+								<li><a href="cv.html">CV</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>CS194-26 Project 2</h2>
+								<p>Fun with Filters and Frequencies</p>
+								<ul class="actions">
+									<li><a href="../comphoto/projects.html" class="button">All Projects</a></li>
+									<li><a href="https://inst.eecs.berkeley.edu/~cs194-26/fa21/hw/proj2/" class="button">Proj2 Assignment</a></li>
+								</ul>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+								<h2 class="major" id="part-1-fun-with-filters">Part 1: Fun with Filters</h2>
+								<p>We will discuss filtering and colvolving with a difference operator. </p>
+									
+									<h3 id="part-1-1-finite-difference-operator">Part 1.1: Finite Difference Operator</h3>
+									<p>We use the finite difference operator in the x and y to achieve partial differentials. These partials are used to compute the gradient magnitude image, all three of which are shown below:</p>
+									<p><img src="proj2/im_f/11_initial_diff.png" alt="Initial Differentials"></p>
+									<p>If we select a threshold, here jusdged to be about 30, and then bringing all non-zero values to one, we get the following edges:</p>
+									<p><img src="proj2/im_f/11_thresh_diff.png" alt="Threshold Differentials"></p>
+									<h3 id="part-1-2-derivative-of-gaussian-dog-filter">Part 1.2: Derivative of Gaussian (DoG) Filter</h3>
+									<p>We now will smooth the input image with a gaussian filter before we apply the differential opperator. </p>
+									<p>For this image, I used a guassian with a sigma = 3 and a size three times that of sigma:</p>
+									<p><img src="proj2/im_f/12_gaussian.png" alt="Gaussian"></p>
+									<p>Blurring the image with this filter before applying the derivatives creates the following result: (Note that we had to change our thresholds to a lower value, 10, for these images)</p>
+									<p><img src="proj2/im_f/12_Gaussian_diff_1.png" alt="Gaussian blurred derivatives"></p>
+									<p>In this filtered image, we can see that the lines are thicker than they were before. We also get more continuous lines, especially in the gradient magnitude image. </p>
+									<p>We derive a single filter to achieve the same result by first convolving our 2D gaussian of choice with each derivative filter. Importantly, we need to allow the convolution to have &quot;fill&quot; as a boundary instead of &quot;same&quot;. The following shows this computed Derivaties of the Gaussian in both x and y:</p>
+									<p><img src="proj2/im_f/12_DoG.png" alt="Derivative of a Gaussian"></p>
+									<p>We can then apply this single DoGG kernel in both x and y, meaning just one convolution calculation per direction instead of two if we reapply this filter to multiple images. When comparing the work of the DoG kernel, it is identical to the two step convolution above. </p>
+								
+								<h2 class="major" id="part-2-fun-with-frequencies-">Part 2: Fun with Frequencies!</h2>
+									<h3 id="part-2-1-image-sharpening-">Part 2.1: Image &quot;Sharpening&quot;</h3>
+									<p>In this part, we learn to &quot;sharpen&quot; an image by isolating high frequencies and adding them back to the original image. THe amount added back in is determined by the variable &quot;alpha&quot;, which scales the isolated high frequencies. </p>
+									<p>Here we show this process on the provided image:</p>
+									<p><img src="proj2/im_f/21_sharp_taj.png" alt="Sharpened Taj"></p>
+									<p>I prefomed the same sharpening on another image of the Golden gate bridge, thish time with a higher alpha value. It both brings out lines as well as generally brightens the image. This might have to do with our scaling. </p>
+									<p><img src="proj2/im_f/21_sharp_bridge.png" alt="Sharpened Bridge"></p>
+									<p>Sharpening a previously blurred image doesn&#39;t yeild back the original image. In this example, we take a very sharp image of a flower and apply a gaussian filter with sigma of 2. We then try the sharpening algorithm with a gaussian sigma of 4 and an alpha value of 1. the results are below:</p>
+									<p><img src="proj2/im_f/21_blur_sharp.png" alt="Blurred to Sharp"></p>
+									<p>It looks like in this process we lose some of our high frequencies for good. The flower isn&#39;t able to recover some of its original details, like the internal structure of the center. </p>
+									<h3 id="part-2-2-hybrid-images">Part 2.2: Hybrid Images</h3>
+									<p>In this section, we combined the low frequencies of one image with the high frequencies of another image to create a blended images that looks different up close than farther away. Our first test was with a Man and his pet Cat. Cutting both low and high frequencies off at a sigma of 11, we get the following image:</p>
+									<p><img src="proj2/im_f/22_catman_blend.png" alt="Catman Blend"></p>
+									<p>We can break down each step of the process into the following:</p>
+									<p><img src="proj2/im_f/22_ft_analysis.png" alt="Fourier Transform Analysis"></p>
+									<p>This shows us the frequncies present in each original image, as well as the frequencies present after filtering each. Though the Gaussian isn&#39;t perfect, we still see that there &quot;High frequency&quot; image does have less power in the center, and the &quot;Low frequency&quot; filtered image has less extraneous power on the edges, though we do see some cross bars. </p>
+									<p>I tried this method on other images. </p>
+									<p>The first was Sophie, from the movie <strong>Howl&#39;s moving Castle</strong>. She undergoes an aging process throughout the film, so I wanted to try to blend her two faces. The orginal images were slightly small:</p>
+									<p><img src="proj2/im_f/22_sophie_start.png" alt="Sophie, Young and Old"></p>
+									<p>And I tried combining each as the high or low componenet of the combined image:</p>
+									<p><img src="proj2/im_f/22_sophie_blend.png" alt="Sophie, Blended"></p>
+									<p>I believe I got closest with the image on the left. The details of the older womans face seemed fade in and out with different distances. </p>
+									<p>I also tried this to blend two different objects. This worked really well!</p>
+									<p>I played on our motto &quot;Fiat Lux&quot; to turn the Campenille into a candle:
+									<img src="proj2/im_f/22_light_start.png" alt="Light, Campenille and Candle"></p>
+									<p><img src="proj2/im_f/22_light_blend.png" alt="Light, Blended"></p>
+									<h3 id="part-2-3-hybrid-images">Part 2.3: Hybrid Images</h3>
+									<p>In this section, I started to create our Gaussian and Laplacian stacks for the Orapple. </p>
+									<p>The Gaussian stack was created by itteratively applying a gaussian kernel to the images:</p>
+									<p><img src="proj2/im_f/23_gs_2D.png" alt="Gaussian Stack"></p>
+									<p>The Laplacian stack was created by iteratively subtracting one layer of the Gaussian stack from the next. The last layer is the last layer of the Gaussian stack:</p>
+									<p><img src="proj2/im_f/23_ls_2D.png" alt="Laplacian Stack"></p>
+									<p>After creating a Gaussian stack for the vertical mask, we can duplicate the figure from the paper by multiplying each layer of the Laplacian stacks by the corresponding layer of the mask, or its inverse:</p>
+									<p><img src="proj2/im_f/23_lsm_2D.png" alt="Masked Stack"></p>
+									<p>We were able to do this combination again with color:</p>
+									<p><img src="proj2/im_f/23_lsm_3D.png" alt="Masked Stack, Color"></p>
+									<h3 id="part-2-4-multiresolution-blending">Part 2.4: Multiresolution Blending</h3>
+									<p>Now we put it all together!</p>
+									<h4 id="orapple">Orapple</h4>
+									<p>From our prevous work, implementing a vertical step function as a mask, we are able to sum together the mask-combined laplacian stack to create our final orapple image:</p>
+									<p><img src="proj2/im_f/24_orapple_2D.png" alt="The Orapple"></p>
+									<p>After some trials, we were also able to blend the oraple in color:</p>
+									<p><img src="proj2/im_f/24_orapple_3D.png" alt="The Orapple, Color"></p>
+									<p>We then tried this on our own image. </p>
+									<h4 id="the-imfamous-cat-dog">The imfamous Cat Dog</h4>
+									<p>(cat image = <a href="https://bowwowinsurance.com.au/wp-content/uploads/2018/10/bengal.jpg">https://bowwowinsurance.com.au/wp-content/uploads/2018/10/bengal.jpg</a>)
+									(dog image = <a href="https://image.shutterstock.com/image-photo/young-labrador-retriever-4-months-260nw-97138889.jpg">https://image.shutterstock.com/image-photo/young-labrador-retriever-4-months-260nw-97138889.jpg</a>)</p>
+									<p>This... was interesting. It looks like some of the frequencies leaked, which were more obvious when we can see the outline against the white. It took some fiddling to get the bodies to line up semi-believeably. </p>
+									<p><img src="proj2/im_f/24_catdog_3D.png" alt="The Catdog, color"></p>
+									<p>We can see the Laplacian stack for this image here:</p>
+									<p><img src="proj2/im_f/24_lsm_3D.png" alt="Masked Stack, Color"></p>
+									<h4 id="irregular-mask">Irregular Mask</h4>
+									<p>For my irrecular mask, I tried to blend stars onto an eye. Unfortunately, I struggled with getting the mask to properly fit the Eye I was using, and so the outer edge doesn&#39;t look as good as would be ideal. </p>
+									<p><img src="proj2/im_f/24_seye_3D.png" alt="Starry Eye, Color"></p>
+									<h5 id="favorite-thing-i-learned-">Favorite thing I learned?</h5>
+									<p>I loved seeing how different frequencies can be used to build something that looks like it belongs.</p>
+									
+
+								</div>
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p></p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message" /></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Eden McEwen<br />
+								Wyant College of Optical Sciences <br />
+								The University of Arizona <br />
+								1630 E. University Blvd.<br />
+							</li>
+							<li class="icon solid fa-phone">(520) 222-8755</li>
+							<li class="icon solid fa-envelope"><a href="#">website@edens.email</a></li>
+							<li class="icon brands fa-twitter"><a href="#">twitter.com/edenacadia</a></li>
+							<li class="icon brands fa-github"><a href="#">https://github.com/edenacadia</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; 2023 Eden McEwen. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

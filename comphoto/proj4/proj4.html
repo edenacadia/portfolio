@@ -1,0 +1,246 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Mosaics</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Eden McEwen</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="research.html">Research</a></li>
+								<li><a href="cv.html">CV</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>CS194-26 Project 4</h2>
+								<p>IMAGE WARPING and MOSAICING</p>
+								<ul class="actions">
+									<li><a href="../../comphoto/projects.html" class="button">All Projects</a></li>
+									<li><a href="https://inst.eecs.berkeley.edu/~cs194-26/fa21/hw/proj4/" class="button">Proj4 Assignment</a></li>
+								</ul>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+									
+									<h1 id="project-4-part-a-image-warping-and-mosaicing">Project 4 Part A</h1>
+									
+									<h2 class="major" id="step-1-shoot-the-pictures">Step A1: Shoot the Pictures</h2>
+										<p>Below is an example of the images used in this project. 
+											The observer is in the same location, but looking up instead of head on. This leads to a change in perspective. 
+											Correspondences were selected similarly to the last project</p>
+										<div class="box alt"><div class="row gtr-uniform">
+											<div class="col-12"><span class="image fit"><img src="imgA/doe.png" alt="Two perspectives of Doe" /></span></div>
+										</div></div>
+										
+									<h2 class="major" id="step-2-recover-homographies">Step A2: Recover Homographies</h2>
+										<p>In this next step of the project, we recover homography matrix by solving a least squares problem:</p>
+										<p>The matrix that we were given in class can be solved with the following equations:</p>
+										<pre><code>wx = ax + by + c 
+wy = dx + ey + f
+w = gx + hy + 1</code></pre>
+										<p>then we can plug in to get:</p>
+										<pre><code>x(gx + hy + 1) = ax + by + c
+x= ax + by + c + gxx&#39; - hyx&#39; ]]</code></pre>
+										<p>doing a simular situation for y, the A matrix that we set up to solve Ah = p&#39; where h = [ a, b, c, d, e, f, g, h] with a 1 appended after, looks something like:</p>
+										<pre><code>[x, y, 1, 0, 0, 0, -xx&#39;, -yx&#39;] = x&#39;
+[0, 0, 0, x, y, 1, -xy&#39;, -yy&#39;] = y&#39;</code></pre>
+										<p>for each or corresponding points. We then solve these system of equations using least squares, where the error squared from the solution is minimized. This can be solved direcly with exactly 4 correspondences.</p>
+									
+									<h2 class="major" id="step-3-warp-the-images">Step A3: Warp the Images</h2>
+										<p>Using the Homographies recovery developed in the previous step, I was able to inversely warp images to a given set of points. This kind of recovery worked best with sqares and rectangles, since I was able to estimate their ratios. </p>
+										<h3 id="3-image-rectification-1-blackboard">3 Image Rectification 1: Blackboard</h3>
+										<p><img src="imgA/board_4.png" alt="A tilted blackboard"></p>
+										<p>Using our image warping we are now able to see the art on this blackboard!</p>
+										<p><img src="imgA/board_rect.png" alt="A recovered blackboard"></p>
+										<p>This looks pretty similar to any head-on view, which you can&#39;t even get fully because it&#39;s partially hidden in a hallway!</p>
+										<h3 id="3-image-rectification-2-hallway">3 Image Rectification 2: Hallway</h3>
+										<p>For these rectifications, only four points were used because the given points were hand estimated, and worked better by just giving one set. If we were given more time, the H matrix could have been solved for with more. </p>
+										<div class="box alt">
+											<div class="row gtr-uniform">
+												<div class="col-6"><span class="image fit"><img src="imgA/floor_4.png" alt="" /></span></div>
+												<div class="col-6"><span class="image fit"><img src="imgA/floor_rect.png" alt="" /></span></div>
+											</div>
+										</div>
+										<p>This one is fairly disconcerting, and not how one would normally percieve a floor! This transformation was also very sensitive to how the correspondences were chosen, being a pixel or two off would put the hallway into an intense perspective. </p>
+									
+									<h2 class="major" id="step-4-blend-the-images-into-a-mosaic">Step A4: Blend the images into a mosaic</h2>
+										<p>I chose to do a simple gradient of feathering in the overlapping regions of my mosaics. this is mainly because I was still getting to sharp a drop off with multiresolution blending, and didn&#39;t have time to implement a pyramid version for a smoother blend. Generally, this blend still worked well. </p>
+										<h3 id="mosaic-1-doe">Mosaic 1: Doe</h3>
+										<p>Everyone&#39;s favorite library! This is the student view. THis warp was fairly good, except for some distortions on the columns on the side. 8 correspondence points are used. </p>
+										<p><img src="imgA/doe.png" alt="Doe starting images"></p>
+										<p><img src="imgA/doe_rect.png" alt="Doe Mosaic"></p>
+										<h3 id="mosaic-2-mosaic">Mosaic 2: Mosaic</h3>
+										<p>As I was helping my friend move out, I helped them take pictures of their murals! I wasn&#39;t able to get this wall in one image because until now. The structure in the mural itself helped resolve it in the blend. </p>
+										<p><img src="imgA/room.png" alt="Room starting images"></p>
+										<p><img src="imgA/room_rect.png" alt="Room Mosaic"></p>
+										<h3 id="mosaic-3-class">Mosaic 3: Class</h3>
+										<p>Oop. In the heat of the moment. I wasn&#39;t able to get the third picture to quite work! So I left it out. But I think that has more to do with my images than my code. </p>
+										<p><img src="imgA/class.png" alt="Class starting images"></p>
+										<p><img src="imgA/class_rect1.png" alt="Class Mosaic stitched"></p>
+										
+										
+									<h1>Project 4 Part B</h1>
+									
+									<h2 class="major" id="part-1-detecting-harris-corners">Part B1: Detecting Harris corners</h2>
+											<p>Here we use the given code to detect harris corners, We then, following the Brown paper, choose a set of points that are relatively well spaced from each other with ANMS, taking the optimization route of finding the minimum radius, and then taking the 500 largest. </p>
+											<div class="box alt">
+												<div class="row gtr-uniform">
+													<div class="col-6"><span class="image fit"><img src="imgB/doe_harris.png" alt="" /></span></div>
+													<div class="col-6"><span class="image fit"><img src="imgB/doe_anms.png" alt="" /></span></div>
+												</div>
+											</div>
+
+									<h2 class="major" id="part-2-and-3-extracting-feature-descriptor">Part B2 and B3: Extracting Feature Descriptor</h2>
+											<p>We then create a set of features descriptors, from subsampling a 40x40 region around each image to an 8x8 descriptor, and then match them with the Russian Granny trick matched with the SSD:</p>
+											<p><img src="imgB/doe_f_match2.png" alt="Doe feature matched"></p>
+											
+											<p>We chose generally a cutoff lower than 0.7 for our cutoff, as that is where the Brown paper nots that the incorrect points start to outweigh the correct associations. We would like to have picked the peak at 0.1, but some of our matching wasn't good enough for that. </p> 
+											
+									<h2 id="part-4-ransac">Part 4: RANSAC</h2>
+										<p>We then follow the algorithm for RANSAC, iterating on order 10000 times with an epsilong cutoff of 10 to compute a robus homography. Here the features are matched, and then ported to the second image with the homography computed with RANSAC</p>
+										<p><img src="imgB/doe_f_match.png" alt="Doe feature matched< RANSAC"></p>
+										
+									<h2 class="major" id="part-5-mosaics">Part 5: Mosaics</h2>
+										<p>Here we recompute our mosaics from before, but now with Autostiching</p>
+										<h3 id="mosaic-1-doe">Mosaic 1: Doe</h3>
+										<p>Doe was challenging as it has a lot of repeating feautures that would often get confused. It took several tries with tuning parameters to get this one right. </p>
+										<p>First, the matched points:
+										<div class="box alt"><div class="row gtr-uniform">
+											<div class="col-12"><span class="image fit"><img src="imgB/doe_f_match_RANSAC.png" alt="Doe computed points" /></span></div>
+										</div></div>
+										<p>This is our auto vs. hand rectified image: </p>
+											<div class="box alt">
+												<div class="row gtr-uniform">
+													<div class="col-6"><span class="image fit"><img src="imgB/doe_rect_auto.png" alt="" /></span></div>
+													<div class="col-6"><span class="image fit"><img src="imgA/doe_rect.png" alt="" /></span></div>
+												</div>
+											</div>
+										<p>Both rectifications struggles with the siding...</p>
+										
+										<h3 id="mosaic-2-mosaic">Mosaic 2: Mosaic</h3>
+										<p>Suprisingly, this was the mosaic that worked the best. The murals my friend had painted lended themselves well for feature alignment.</p>
+										<p>First, the matched points:
+											<div class="box alt"><div class="row gtr-uniform">
+												<div class="col-12"><span class="image fit"><img src="imgB/room_f_match_RANSAC.png" alt="Room computed points" /></span></div>
+											</div></div>
+										<p>This is our auto vs. hand rectified image: </p>
+											<div class="box alt">
+												<div class="row gtr-uniform">
+													<div class="col-6"><span class="image fit"><img src="imgB/room_rect_auto.png" alt="Room auto rectified images" /></span></div>
+													<div class="col-6"><span class="image fit"><img src="imgA/room_rect.png" alt="Room Mosaic" /></span></div>
+												</div>
+											</div>
+										<p>Compared to the original mosaic, the space feels much more acurate in the perspective. </p>
+										
+										<h3 id="mosaic-3-class">Mosaic 3: Class</h3>
+										<p>This autostitching also did better than my original.</p>
+										<p>First, the matched points:
+											<div class="box alt"><div class="row gtr-uniform">
+												<div class="col-12"><span class="image fit"><img src="imgB/class_f_match_RANSAC.png" alt="Class computed points" /></span></div>
+											</div></div>
+										<p>This is our auto vs. hand rectified image: </p>
+											<div class="box alt">
+												<div class="row gtr-uniform">
+													<div class="col-6"><span class="image fit"><img src="imgB/class_rect1_auto.png" alt="Class auto rectified images" /></span></div>
+													<div class="col-6"><span class="image fit"><img src="imgA/class_rect1.png" alt="Class Mosaic" /></span></div>
+												</div>
+											</div>
+										<p>The homography is much more true to the details of my classmates. I&#39;m very impressed!</p>
+										
+										<h2 class="major" id="what-i-have-learned-">What I have learned!</h2>
+										<p>I honestly wsa very suprised at how easy it was for this algorithm to detect corners in various situations. I was not expecting the loops of my friend&#39;s mural to work better than the very linear structure of doe. I learned a lot about what an algorithm is interested in looking at. All in all, this was one of the most fascinating projects I have ever done, and I&#39;m pretty proud of my work!</p>
+									
+								
+
+								</div>
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p></p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message" /></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Eden McEwen<br />
+								Wyant College of Optical Sciences <br />
+								The University of Arizona <br />
+								1630 E. University Blvd.<br />
+							</li>
+							<li class="icon solid fa-phone">(520) 222-8755</li>
+							<li class="icon solid fa-envelope"><a href="#">website@edens.email</a></li>
+							<li class="icon brands fa-twitter"><a href="#">twitter.com/edenacadia</a></li>
+							<li class="icon brands fa-github"><a href="#">https://github.com/edenacadia</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; 2023 Eden McEwen. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

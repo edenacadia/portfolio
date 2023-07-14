@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Final Project</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Eden McEwen</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="research.html">Research</a></li>
+								<li><a href="cv.html">CV</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>CS194-26 Project 6</h2>
+								<p>final project: Image Quilting & High Dynamic Range</p>
+								<ul class="actions">
+									<li><a href="../../comphoto/projects.html" class="button">All Projects</a></li>
+									<li><a href="https://inst.eecs.berkeley.edu/~cs194-26/fa21/hw/final-project/" class="button">Final proj Assignment</a></li>
+								</ul>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<h2 class="major" id="part-a-image-quilting">Part A: Image Quilting</h2>
+									<p>Starting from some bricks.
+									<p>First we tried a random quilting:
+									<img src="imgA/bricks_small_random.jpg" alt="Random Quilting of bricks"></p>
+									<p>I then implemented the ssd simple choice:
+									<img src="imgA/bricks_small_simple.jpg" alt="Simple Quilting of bricks">
+									We can already see that this image is doing a better job of layering bricks together</p>
+									<p>Finally, we used a more nuanced cut to stick the bricks together. I did mine by color, which gave my outpit some strange residuals. 
+									<img src="imgA/bricks_small_cut.jpg" alt="Quilting of bricks with a cut"></p>
+									<p>Directly comparing the brick, there is definetly less clunky work between each cut, that could be made even better with blending. </p>
+									<p>The improvement of this cut was most impressive with a more organic boundries, like the white whatever it was:
+									<img src="imgA/white_small_cut.jpg" alt="Quilting of white with a cut"></p>
+									<p>I then transfered this tecture onto the face of the sketch:
+									<img src="imgA/sketch.jpeg" alt="Guiding Image"></p>
+									<p>Tada!
+									<img src="imgA/white_small_man.jpg" alt="Guiding Image now with texture"></p>
+									<p>This was an incredibly cool assignment! I learned a lot about how my eyes interpret an enjoy tectures. </p>
+									
+									<h2 class="major" id="part-b-high-dynamic-range-">Part B: High Dynamic Range:</h2>
+									<p>My algorithm was very similar to the one described in the paper. I made sure to make use of numpy vectorizations where possible to speed up computation. </p>
+									<p>Below is my mean radiance map:
+									<img src="imgB/rad_map_mean.jpg" alt="Visualized your radiance map, color median"></p>
+									<p>And the relationships I recoved between exposure and pixel values:
+									<img src="imgB/log_exp.jpg" alt="Recovered relationship between exposure and pixel values"></p>
+									<p>The radiance map was quite lovely! and showed new dimensions:
+									<img src="imgB/rad_map.jpg" alt="Visualized your radiance map, clipped"></p>
+									<p>We went further, and started to work with tone mapping.</p>
+									<p>The global code brough a decent, but still dark image:
+									<img src="imgB/rad_map_global_simple.jpg" alt="Tone mapping, global"></p>
+									<p>Taking it farther and implementing the local tone mapping with durand, we are now able to see richer details, for instance we are able to see the detail in the windows! Gamma is 0.7 for the gamma correction. 
+									<img src="imgB/rad_map_durand.jpg" alt="Tone mapping, local"></p>
+									<p>This was a very cool class and I am so glad I took it! I will be thinking about it for the rest of my life. Seriously, so impactful.</p>
+									
+										
+								</div>
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p></p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message" /></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Eden McEwen<br />
+								Wyant College of Optical Sciences <br />
+								The University of Arizona <br />
+								1630 E. University Blvd.<br />
+							</li>
+							<li class="icon solid fa-phone">(520) 222-8755</li>
+							<li class="icon solid fa-envelope"><a href="#">website@edens.email</a></li>
+							<li class="icon brands fa-twitter"><a href="#">twitter.com/edenacadia</a></li>
+							<li class="icon brands fa-github"><a href="#">https://github.com/edenacadia</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; 2023 Eden McEwen. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

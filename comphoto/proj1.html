@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Solid State by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Eden McEwen</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="research.html">Research</a></li>
+								<li><a href="cv.html">CV</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>CS194-26 Project 1</h2>
+								<p>Colorizing the Prokudin-Gorskii photo collection.</p>
+								<ul class="actions">
+									<li><a href="../comphoto/projects.html" class="button">All Projects</a></li>
+									<li><a href="https://inst.eecs.berkeley.edu/~cs194-26/fa21/hw/proj1/" class="button">Assignment</a></li>
+								</ul>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+								<h2 class="major" id="overview-and-method">Overview and method</h2>
+									<p>In this project, black and white images taken using three color filters are aligned to produce a mostly in focus color photograph. Photos are taken from the <a href="https://www.loc.gov/pictures/collection/prok/">Prokudin-Gorskii Collection</a>.</p>
+									<p>To align these photos, a normalized cross correlation is taken across the image to find the highest correlation shift. For larger images, this is broken down into a pyramid scheme where lower resolution versions of images are shifted first, and then within a range of the scaled up shift higher degrees of detail to the shift are realized.</p>
+								
+								<h2 class="major" id="results-on-jpg-images">Results on JPG Images</h2>
+								<p>Since the JPG images are so small, a simple normalized cross correlation on each image in the center, with some cropping, is enough for decent results.</p>
+								
+								<h3 id="jpg-1-cathedral">JPG 1: cathedral</h3>
+								<div class="box alt">
+									<div class="row gtr-uniform">
+										<div class="col-6"><span class="image fit"><img src="proj1/before/cathedral.jpg" alt="" /></span></div>
+										<div class="col-6"><span class="image fit"><img src="proj1/aligned/cathedral.jpg" alt="" /></span></div>
+									</div>
+								</div>
+								<p>Shift Found: Red (12.0, 3.0), Green (5.0, 2.0)</p>
+
+
+								<h3 id="jpg-2-monastery">JPG 2: monastery</h3>
+								<div class="box alt">
+									<div class="row gtr-uniform">
+										<div class="col-6"><span class="image fit"><img src="proj1/before/monastery.jpg" alt="" /></span></div>
+										<div class="col-6"><span class="image fit"><img src="proj1/aligned/monastery.jpg" alt="" /></span></div>
+									</div>
+								</div>
+								<p>Shift Found: Red (3.0, 2.0), Green (-3.0, 2.0)</p>
+								
+								<h3 id="jpg-3-tobolsk">JPG 3: tobolsk</h3>
+								<div class="box alt">
+									<div class="row gtr-uniform">
+										<div class="col-6"><span class="image fit"><img src="proj1/before/tobolsk.jpg" alt="tobolsk before" /></span></div>
+										<div class="col-6"><span class="image fit"><img src="proj1/aligned/tobolsk.jpg" alt="tobolsk after" /></span></div>
+									</div>
+								</div>
+								<p>Shift Found: Red (6.0, 3.0), Green (3.0, 3.0)</p>
+
+		
+								<h2 class="major" id="results-on-tiff-images">Results on TIFF Images</h2>
+								<p> Tiff images are much larger than jpeg, so these combinations were done with the pyramid scheme described in the overview section of the project.</p>
+								
+								
+								<h3 id="tif1-castle">tif1: castle</h3>
+								<div class="box alt">
+									<div class="row gtr-uniform">
+										<div class="col-6"><span class="image fit"><img src="proj1/before/castle.jpg" alt="castle before"/></span></div>
+										<div class="col-6"><span class="image fit"><img src="proj1/aligned/castle.jpg" alt="castle after" /></span></div>
+									</div>
+								</div>
+								<p>Shift Found: Red (767, 3150), Green (34, 3)</p>
+
+								<h3 id="tif2-emir">tif2: emir</h3>
+								<div class="box alt">
+									<div class="row gtr-uniform">
+										<div class="col-6"><span class="image fit"><img src="proj1/before/emir.jpg" alt="emir before"/></span></div>
+										<div class="col-6"><span class="image fit"><img src="proj1/aligned/emir.jpg" alt="emir after" /></span></div>
+									</div>
+								</div>
+								<p>Shift Found: Red (767, 3150), Green (49, 24)</p>
+								<p> Just by looking at these shifts we can tell that our algorithm strugled to align Emir. This is because we have large structures in the edges of the image that dragg the correlation to those highest shifts. That corruption makes our correction worse than the original image.</p>
+
+
+								<h3 id="tif3-harvesters">Other TIFF Results</h3>
+
+								<div class="box alt">
+									<div class="row gtr-uniform">
+										<div class="col-4"><span class="image fit"><img src="proj1/aligned/harvesters.jpg" alt="emir before"/></span></div>
+										<div class="col-4"><span class="image fit"><img src="proj1/aligned/icon.jpg" alt="emir after" /></span></div>
+										<div class="col-4"><span class="image fit"><img src="proj1/aligned/melons.jpg" alt="emir after" /></span></div>
+										<div class="col-4"><span class="image fit"><img src="proj1/aligned/onion_church.jpg" alt="emir after" /></span></div>
+										<div class="col-4"><span class="image fit"><img src="proj1/aligned/self_portrait.jpg" alt="emir after" /></span></div>
+										<div class="col-4"><span class="image fit"><img src="proj1/aligned/three_generations.jpg" alt="emir after" /></span></div>
+										<div class="col-4"><span class="image fit"><img src="proj1/aligned/train.jpg" alt="emir after" /></span></div>
+										<div class="col-4"><span class="image fit"><img src="proj1/aligned/workshop.jpg" alt="emir after" /></span></div>
+										<div class="col-4"><span class="image fit"><img src="proj1/aligned/lady.jpg" alt="emir after" /></span></div>
+									</div>
+								</div>
+
+								<h2 id="results-on-personal-choice-tiff">Results on Personal Choice TIFF</h2>
+									<p>I also chose this group photo in the collection to try with, as the human subjects are the most interesting and the most likely to move. If I had time, I would have adjusted the color balance, since red seems to be the strongest. </p>
+									
+									<div class="box alt">
+										<div class="row gtr-uniform">
+											<div class="col-6"><span class="image fit"><img src="proj1/before/00313a.jpg" alt="emir before"/></span></div>
+											<div class="col-6"><span class="image fit"><img src="proj1/aligned/00313a.jpg" alt="emir after" /></span></div>
+										</div>
+									</div>
+									<p>Shift Found: Red  (114, 15), Green (49, 24)</p>
+									
+								<h2 id="bells-and-whistles">Bells and Whistles</h2>
+								<p>I have none to show. I really enjoyed this project, but had a very difficult week. </p>
+
+								</div>
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p></p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message" /></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Eden McEwen<br />
+								Wyant College of Optical Sciences <br />
+								The University of Arizona <br />
+								1630 E. University Blvd.<br />
+							</li>
+							<li class="icon solid fa-phone">(520) 222-8755</li>
+							<li class="icon solid fa-envelope"><a href="#">website@edens.email</a></li>
+							<li class="icon brands fa-twitter"><a href="#">twitter.com/edenacadia</a></li>
+							<li class="icon brands fa-github"><a href="#">https://github.com/edenacadia</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; 2023 Eden McEwen. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

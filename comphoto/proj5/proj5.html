@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>NN Faces</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Eden McEwen</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="research.html">Research</a></li>
+								<li><a href="cv.html">CV</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>CS194-26 Project 5</h2>
+								<p>Facial Keypoint Detection with Neural Networks</p>
+								<ul class="actions">
+									<li><a href="../../comphoto/projects.html" class="button">All Projects</a></li>
+									<li><a href="https://inst.eecs.berkeley.edu/~cs194-26/fa21/hw/proj5/" class="button">Proj5 Assignment</a></li>
+								</ul>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+										<h2 class="major" id="part-1-nose-tip-detection">Part 1: Nose Tip Detection</h2>
+										<p>First, We take the Danes dataset and extract the nose point with the following:</p>
+										<ul>
+										<li>Show samples of data loader (5 points)</li>
+										<li>Plot train and validation loss (5 points)</li>
+										<li>Show how hyper parameters effect results (5 points)</li>
+										<li>Show 2 success/failure cases (5 points)</li>
+										</ul>
+										<h3 id="p1-1-data-loader">p1.1 Data Loader</h3>
+										<p>The nose data point was extracted from the face dataset, and is returned with the 80x60 image when iterated through the dataset. We define our test and validation set by sending in indexes to cut on, as needed. </p>
+										<p><img src="img/nose_data.jpg" alt="Nose Data Loader"></p>
+										<h3 id="p1-2-train-and-validation-loss">p1.2 Train and validation loss</h3>
+										<p>In my most successful attempt, I use:</p>
+										<ul>
+										<li>Learning Rate: 0.001</li>
+										<li>Batch Size: 8</li>
+										<li>Epoch count: 15</li>
+										</ul>
+										<p>After training, we see an average validation loss of 0.0001. </br></p>
+										<p>The training and validation loss are as follows:</p>
+										<p><img src="img/nose_loss_lr0.001_batch8_epochs15.png" alt="Nose Loss Rate"></p>
+										<h3 id="p1-3-hyperparameters">p1.3 hyperparameters</h3>
+										<p>An increase in learning rate (from 1e-3 to 1e-4) shows a gentler slope for training, eventually reaching similar accuracies as our own. However, a decrease in learning rate (from 1e-3 to 1e-2) shows the model reaches a solution too fast, and plateaus after about the 5th batch.</p>
+										<p><img src="img/nose_loss_comp_lr.png" alt="Comparing learning rates"></p>
+										<p>We had a relatively small batch size of 8. Decreaseing this further doesn&#39;t seem to change the outcomes much, but increaseing the batch size shows the training set plateauing early.</p>
+										<p><img src="img/nose_loss_comp_b.png" alt="Comparing Batch Size"></p>
+										<h3 id="p1-4-successes-and-failures">p1.4 Successes and failures</h3>
+										<p>One of the initial failures was the model only predicting the average nose point. This was fixed by decreasing batch size. For an example of what this error looks like, see the outputs of the large batch size test from before:</p>
+										<p><img src="img/nose_error_large_batch.png" alt="Early error"></p>
+										<p>To fully understand this models strenths and weakenesses, we can look at the output of our leftover validation set. Right away, its clear that the first two rows have significant errors. This may be due to the eccess hair of the woman, where we didn&#39;t have as many women to train on, and the smaller head shape of the man. A particular success is the head turn tracking in the second to last row, where the model is able to track the turn of the head, and the second to last image, where the nose is guessed with almost no error.</p>
+										<p><img src="img/nose_output_batch.png" alt="Validation Output"></p>
+										
+										<h2 class="major" id="part-2-full-facial-keypoints-detection">Part 2: Full Facial Keypoints Detection</h2>
+										<p>Next, we want to train</p>
+										<ul>
+										<li>Show samples of data loader (5 points)</li>
+										<li>Report detailed architecture (5 points)</li>
+										<li>Plot train and validation loss (5 points)</li>
+										<li>Show 2 success/failure cases (5 points)</li>
+										<li>Visualize learned features (5 points)</li>
+										</ul>
+										<h3 id="p2-1-data-loader">p2.1 Data Loader</h3>
+										<p><strong>Show samples of data loader (5 points)</strong></p>
+										<p>Here we can see examples of our data loader plain. In this implementation I deciced on scaling the images up to 240x180:</p>
+										<p><img src="img/face_data_plain.png" alt="Face Loader Plain"></p>
+										<p>And with augmentations:</p>
+										<p><img src="img/face_data.png" alt="Face Loader with augmentation"></p>
+										<p>The augmentations applied were a color jitter, a random angular rotation from 15 to -15, and a random shift of 10 to -10 pixels.</p>
+										<h3 id="p2-2-architecture-details">p2.2 Architecture details</h3>
+										<p><strong>Report detailed architecture (5 points)</strong></p>
+										<p>Many, many, many architectures were tried. For most of them, the model returned an average face. I settled on the following architecture was settled on, drawing inspiration from the philosophy of the VGGNet. Each layer has a convolution of increasing size, folowed by a relu, followed by a max pool of kernel size 2 and stride 2. All but the first two kernels are 3x3, the first being larger helepd with training. Finally, there are three fully connected layers. </p>
+										<p><img src="img/face_net.png" alt="Architecture of Face NN"></p>
+										<h3 id="p2-3-training-and-validation-loss">p2.3 Training and validation loss</h3>
+										<p><strong>Plot train and validation loss (5 points)</strong></p>
+										<p>Our model was trained with a batch size of 16, with a learning rate of 1e-3, for 200 epochs. We can see quick learning up to about 75 epochs, then a large jump, and what seems to be overfitting after that. Increasing the batch size could have improved the smoothness of this curve, but it was not felt to be necessary for the final results. </p>
+										<p><img src="img/face_lr0.001_batch16_epochs200.png" alt="Face Loss Rate"></p>
+										<p>The final validation loss of the network on the 42 test images: 0.00092</p>
+										<h3 id="p2-4-successes-and-failures">p2.4 Successes and failures</h3>
+										<p><strong>Show 2 success/failure cases (5 points)</strong></p>
+										<p>Plotting some unseen validation images, we can see that the model struggles in cases of thin heads, or large hair, like the first and second subjests. If does identify points fairly well for the forth subject (success in full frontal and side), where it turns well with the model. I believe that the hair for the woman caused confusion in the failure case, as well as beard confusion in the first case. </p>
+										<p><img src="img/face_output_batch.png" alt="Face Validation Output"></p>
+										<h3 id="p2-5-visualize-learned-features">p2.5 Visualize learned features</h3>
+										<p><strong>Show 2 success/failure cases (5 points)</strong></p>
+										<p>Here, we visiualize the features of our kernels. SOme of the initial larger kernels look like edge detections!</p>
+										<p><img src="img/face_cov1.png" alt="Face Cov2d 1"></p>
+										<p><img src="img/face_cov2.png" alt="Face Cov2d 2"></p>
+										<p><img src="img/face_cov2.png" alt="Face Cov2d 3"></p>
+										<p><img src="img/face_cov4.png" alt="Face Cov2d 4"></p>
+										
+										<h2 class="major" id="part-3-train-with-larger-dataset">Part 3: Train With Larger Dataset</h2>
+										<ul>
+										<li>Submit a working model to Kaggle competition (15 points)</li>
+										<li>Report detailed architecture (10 points)</li>
+										<li>Plot train and validation loss (10 points)</li>
+										<li>Visualize results on test set (10 points)</li>
+										<li>Run on at least 3 of your own photos (10 points)</li>
+										</ul>
+										<h3 id="p3-1-kaggle-submission">p3.1 Kaggle Submission</h3>
+										<p><strong>Submit a working model to Kaggle competition (15 points)</strong></p>
+										<p>Yes I did submit to Kaggle. Under the name EAM. No it was not great. </p>
+										<h3 id="p3-2-detailed-architecture">p3.2 Detailed architecture</h3>
+										<p><strong>Report detailed architecture (10 points)</strong></p>
+										<p>For this section of the project, I trained a REsNet18 with a learning rate of 1e-3 and a batch size of 16 for 12 epochs. I changed the input to accept grayscale, and the output to be out 68*2 features. </p>
+										<p><img src="img/all_model.png" alt="Architecture of All Face NN"></p>
+										<h3 id="p3-3-plot-and-train-validation">p3.3 Plot and Train validation</h3>
+										<p><strong>Plot train and validation loss (10 points)</strong></p>
+										<p>Below is a plot of the training for this model:</p>
+										<p><img src="img/all_loss.png" alt="Loss of All Face NN"></p>
+										<h3 id="p3-3-visualize-results-on-test-set-">p3.3 Visualize results on test set:</h3>
+										<p><strong>Visualize results on test set (10 points)</strong></p>
+										<p>Here is the test set, with some obvious errors:</p>
+										<p><img src="img/all_predicts.png" alt="Predictions of All Face NN"></p>
+										<h3 id="p3-3-run-on-own-images-">p3.3 Run on own images:</h3>
+										<p><strong>Run on at least 3 of your own photos (10 points)</strong></p>
+										<p>I ran out of time for this one but I think it is very cool!</p>
+										
+								</div>
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p></p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message" /></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Eden McEwen<br />
+								Wyant College of Optical Sciences <br />
+								The University of Arizona <br />
+								1630 E. University Blvd.<br />
+							</li>
+							<li class="icon solid fa-phone">(520) 222-8755</li>
+							<li class="icon solid fa-envelope"><a href="#">website@edens.email</a></li>
+							<li class="icon brands fa-twitter"><a href="#">twitter.com/edenacadia</a></li>
+							<li class="icon brands fa-github"><a href="#">https://github.com/edenacadia</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; 2023 Eden McEwen. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

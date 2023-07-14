@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Face Morphing</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Eden McEwen</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="research.html">Research</a></li>
+								<li><a href="cv.html">CV</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>CS194-26 Project 3</h2>
+								<p>Face Morphing</p>
+								<ul class="actions">
+									<li><a href="../../comphoto/projects.html" class="button">All Projects</a></li>
+									<li><a href="https://inst.eecs.berkeley.edu/~cs194-26/fa21/hw/proj3/" class="button">Proj3 Assignment</a></li>
+								</ul>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<p>In this project I explore something my family has always pondered, how similar are me and my brother? I take our actual passport photos and morph them together using the techniques discussed in class. </p>
+									
+									<h2 class="major" id="part-1-defining-correspondences">Part 1: Defining Correspondences</h2>
+									<p>I first set up theinteractive system to define correspondences, keeping points in the same order per selection. the triangulation was computed on the midpoints of the two sets of points.</p>
+									<div class="box alt">
+										<div class="row gtr-uniform">
+											<div class="col-6"><span class="image fit"><img src="img/A_tri.png" alt="" /></span></div>
+											<div class="col-6"><span class="image fit"><img src="img/B_tri.png" alt="" /></span></div>
+										</div>
+									</div>
+									
+									<h2 class="major" id="part-2-computing-the-mid-way-face-">Part 2: Computing the &quot;Mid-way Face&quot;</h2>
+									<p>Now that we have two sets of points, we need an operation to go between them. I set up my implementaion of the Affine matrix by taking two sets of triangle verticies, and back solving for the transformation matrix between them. </p>
+									<p>I then use this affine function to perfome an inverse warp. Instead of transforming each image pixel to the midway face, I take each pixel in the midway fave, filtered by which triangluation it belongs to, to warp to one of the two images. This ensures each pixel of the midway face is accounted for. Non-integer warps are delt with interpolation via a RectBivariateSpline.</p>
+									<p>After performing an inverse warp, we get the following two midway images ( here the warp fraction is 0.5).</p>
+									<p><img src="img/AB_morph.png" alt="Unblended midway morphs"></p>
+									<p>We then take a dissolve fraction of 0.5 to blend these two images together, like so:</p>
+									<p><img src="img/AB_mid.png" alt="Blended midway face."></p>
+									
+									<h2 class="major" id="part-3-the-morph-sequence">Part 3: The Morph Sequence</h2>
+									<p>Finally, we can create a morph sequence! This is done by iterating over increasing blend and warp fractions via the newly implemented morph function.</p>
+									<p><img src="img/AB_morph.gif" alt="Morph Sequence"></p>
+									
+									<h2 class="major" id="part-4-the-mean-face-of-a-population">Part 4: The &quot;Mean face&quot; of a population</h2>
+									<p>What would I Look like as a Dane? In this section, I use the Danish face set, cited below, to morph my features to be a bit more danish.</p>
+									<p>M. B. Stegmann, B. K. Ersbøll, and R. Larsen. FAME – a flexible appearance modelling environment. IEEE Trans. on Medical Imaging, 22(10):1319–1331, 2003</p>
+									<h2 id="part-4a-population-mean">Part 4a: Population mean</h2>
+									<p>First, I pull points from the pre-label data set, and compute the average feature location using normalized pixel values. </p>
+									<p><img src="img/Danes_avg_pts.png" alt="Danes average points."></p>
+									<p>Next, I morph each provided image to this mean position. This puts all of the faces in the same position on the image plane. Below are a few examples of those morphed images. You can see that the faces are very proportionally similar on the bottom row of morphed images. </p>
+									<p><img src="img/Danes_avg_ex.png" alt="Danes, example morphs to mean."></p>
+									<p>We then can take each morphed image and stack them, creating an population mean. The features that are clearest are in the center, where we have the highest concentrations of feature points.</p>
+									<p><img src="img/Danes_avg_face.png" alt="Danes, Population Mean."></p>
+									<h2 id="part-4b-me-on-the-mean-">Part 4b: Me on the mean!</h2>
+									<p>Now lets put me into the mix! One of the most challenging parts was carefully following the order of points laid out by the specifications of the dataset.</p>
+									<p><img src="img/Danes_face_map.png" alt="Danes, Point order."></p>
+									<p>I made sure to resize my image, and carefully select points with the code created above:</p>
+									<p><img src="img/Danes_pts.png" alt="Danes, Applied points."></p>
+									<p>Now that we have correspondences, I can morph my face onto the structure of the average Dane population. I do this below, and you can see that the way the correspondences were taken, foreheads were very unconstrained! As a Dane my brain is much bigger. There were also more male faces, so my jawline follows suit and becomes much sharper. </p>
+									<p><img src="img/Danes_from_d.png" alt="Danes, My face on average."></p>
+									<p>I can do the opposite, structuring the average Dane onto my own face structure. This rounds out their faces, and enlarges their eyes, following my own facial features.</p>
+									<p><img src="img/Danes_to_d.png" alt="Danes, Average on my face."></p>
+									
+									<h2 class="major" id="part-5-caricatures-extrapolating-from-the-mean">Part 5: Caricatures: Extrapolating from the mean</h2>
+									<p>So I don&#39;t like how I look as Dane! Instead looking more danish, we can subtract their features by using a negative alpha, and deviating from their appearance. I now have a much smaller forehead and nose! I look a little snooty. </p>
+									<p><img src="img/char.png" alt="Danes, less of them."></p>
+									
+									<h2 class="major" id="part-6-smiling-and-frowning-">Part 6: Smiling and frowning.</h2>
+									<p>I always regretted I didn&#39;t smile more in my passport photo! Using the similing portion of the danish dataset, I was able to rectify an old mistake. Similar to the characture above, I used apla to add a smile to my facial features:</p>
+									<p><img src="img/smile.png" alt="Danes, helping me smile."></p>
+									<p>I can also subtract one:</p>
+									<p><img src="img/frown.png" alt="Danes, helping me frown."></p>
+									<h2 class="major" id="conclusion">Conclusion</h2>
+									<p>This project allowed me to test facial warpings, develop my own affine function, and morphing procedures. I also got to freak out my parents by facial morphing their children together.</p>
+									
+									
+
+								</div>
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p></p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message" /></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Eden McEwen<br />
+								Wyant College of Optical Sciences <br />
+								The University of Arizona <br />
+								1630 E. University Blvd.<br />
+							</li>
+							<li class="icon solid fa-phone">(520) 222-8755</li>
+							<li class="icon solid fa-envelope"><a href="#">website@edens.email</a></li>
+							<li class="icon brands fa-twitter"><a href="#">twitter.com/edenacadia</a></li>
+							<li class="icon brands fa-github"><a href="#">https://github.com/edenacadia</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; 2023 Eden McEwen. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
