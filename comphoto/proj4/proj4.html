@@ -19,7 +19,7 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a href="index.html">Eden McEwen</a></h1>
+						<h1><a href="/index.html">Eden McEwen</a></h1>
 						<nav>
 							<a href="#menu">Menu</a>
 						</nav>
@@ -30,8 +30,8 @@
 						<div class="inner">
 							<h2>Menu</h2>
 							<ul class="links">
-								<li><a href="../../index.html">Home</a></li>
-								<li><a href="research.html">Research</a></li>
+								<li><a href="/index.html">Home</a></li>
+								<li><a href="/research/research.html">Research</a></li>
 								<li><a href="cv.html">CV</a></li>
 							</ul>
 							<a href="#" class="close">Close</a>
@@ -74,13 +74,13 @@ w = gx + hy + 1</code></pre>
 										<p>then we can plug in to get:</p>
 										<pre><code>x(gx + hy + 1) = ax + by + c
 x= ax + by + c + gxx&#39; - hyx&#39; ]]</code></pre>
-										<p>doing a simular situation for y, the A matrix that we set up to solve Ah = p&#39; where h = [ a, b, c, d, e, f, g, h] with a 1 appended after, looks something like:</p>
+										<p>doing a similar situation for y, the A matrix that we set up to solve Ah = p&#39; where h = [ a, b, c, d, e, f, g, h] with a 1 appended after, looks something like:</p>
 										<pre><code>[x, y, 1, 0, 0, 0, -xx&#39;, -yx&#39;] = x&#39;
 [0, 0, 0, x, y, 1, -xy&#39;, -yy&#39;] = y&#39;</code></pre>
-										<p>for each or corresponding points. We then solve these system of equations using least squares, where the error squared from the solution is minimized. This can be solved direcly with exactly 4 correspondences.</p>
+										<p>for each or corresponding points. We then solve these system of equations using least squares, where the error squared from the solution is minimized. This can be solved directly with exactly 4 correspondences.</p>
 									
 									<h2 class="major" id="step-3-warp-the-images">Step A3: Warp the Images</h2>
-										<p>Using the Homographies recovery developed in the previous step, I was able to inversely warp images to a given set of points. This kind of recovery worked best with sqares and rectangles, since I was able to estimate their ratios. </p>
+										<p>Using the Homographies recovery developed in the previous step, I was able to inversely warp images to a given set of points. This kind of recovery worked best with squares and rectangles, since I was able to estimate their ratios. </p>
 										<h3 id="3-image-rectification-1-blackboard">3 Image Rectification 1: Blackboard</h3>
 										<p><img src="imgA/board_4.png" alt="A tilted blackboard"></p>
 										<p>Using our image warping we are now able to see the art on this blackboard!</p>
@@ -94,7 +94,7 @@ x= ax + by + c + gxx&#39; - hyx&#39; ]]</code></pre>
 												<div class="col-6"><span class="image fit"><img src="imgA/floor_rect.png" alt="" /></span></div>
 											</div>
 										</div>
-										<p>This one is fairly disconcerting, and not how one would normally percieve a floor! This transformation was also very sensitive to how the correspondences were chosen, being a pixel or two off would put the hallway into an intense perspective. </p>
+										<p>This one is fairly disconcerting, and not how one would normally perceive a floor! This transformation was also very sensitive to how the correspondences were chosen, being a pixel or two off would put the hallway into an intense perspective. </p>
 									
 									<h2 class="major" id="step-4-blend-the-images-into-a-mosaic">Step A4: Blend the images into a mosaic</h2>
 										<p>I chose to do a simple gradient of feathering in the overlapping regions of my mosaics. this is mainly because I was still getting to sharp a drop off with multiresolution blending, and didn&#39;t have time to implement a pyramid version for a smoother blend. Generally, this blend still worked well. </p>
@@ -127,16 +127,16 @@ x= ax + by + c + gxx&#39; - hyx&#39; ]]</code></pre>
 											<p>We then create a set of features descriptors, from subsampling a 40x40 region around each image to an 8x8 descriptor, and then match them with the Russian Granny trick matched with the SSD:</p>
 											<p><img src="imgB/doe_f_match2.png" alt="Doe feature matched"></p>
 											
-											<p>We chose generally a cutoff lower than 0.7 for our cutoff, as that is where the Brown paper nots that the incorrect points start to outweigh the correct associations. We would like to have picked the peak at 0.1, but some of our matching wasn't good enough for that. </p> 
+										<p>We chose generally a cutoff lower than 0.7 for our cutoff, as that is where the Brown paper notes that the incorrect points start to outweigh the correct associations. We would like to have picked the peak at 0.1, but some of our matching wasn't good enough for that. </p> 
 											
 									<h2 id="part-4-ransac">Part 4: RANSAC</h2>
-										<p>We then follow the algorithm for RANSAC, iterating on order 10000 times with an epsilong cutoff of 10 to compute a robus homography. Here the features are matched, and then ported to the second image with the homography computed with RANSAC</p>
+										<p>We then follow the algorithm for RANSAC, iterating on order 10000 times with an epsilon cutoff of 10 to compute a robust homography. Here the features are matched, and then ported to the second image with the homography computed with RANSAC</p>
 										<p><img src="imgB/doe_f_match.png" alt="Doe feature matched< RANSAC"></p>
 										
 									<h2 class="major" id="part-5-mosaics">Part 5: Mosaics</h2>
-										<p>Here we recompute our mosaics from before, but now with Autostiching</p>
+										<p>Here we recompute our mosaics from before, but now with autostitching</p>
 										<h3 id="mosaic-1-doe">Mosaic 1: Doe</h3>
-										<p>Doe was challenging as it has a lot of repeating feautures that would often get confused. It took several tries with tuning parameters to get this one right. </p>
+										<p>Doe was challenging as it has a lot of repeating features that would often get confused. It took several tries with tuning parameters to get this one right. </p>
 										<p>First, the matched points:
 										<div class="box alt"><div class="row gtr-uniform">
 											<div class="col-12"><span class="image fit"><img src="imgB/doe_f_match_RANSAC.png" alt="Doe computed points" /></span></div>
@@ -151,7 +151,7 @@ x= ax + by + c + gxx&#39; - hyx&#39; ]]</code></pre>
 										<p>Both rectifications struggles with the siding...</p>
 										
 										<h3 id="mosaic-2-mosaic">Mosaic 2: Mosaic</h3>
-										<p>Suprisingly, this was the mosaic that worked the best. The murals my friend had painted lended themselves well for feature alignment.</p>
+										<p>Surprisingly, this was the mosaic that worked the best. The murals my friend had painted lended themselves well for feature alignment.</p>
 										<p>First, the matched points:
 											<div class="box alt"><div class="row gtr-uniform">
 												<div class="col-12"><span class="image fit"><img src="imgB/room_f_match_RANSAC.png" alt="Room computed points" /></span></div>
@@ -163,7 +163,7 @@ x= ax + by + c + gxx&#39; - hyx&#39; ]]</code></pre>
 													<div class="col-6"><span class="image fit"><img src="imgA/room_rect.png" alt="Room Mosaic" /></span></div>
 												</div>
 											</div>
-										<p>Compared to the original mosaic, the space feels much more acurate in the perspective. </p>
+										<p>Compared to the original mosaic, the space feels much more accurate in the perspective. </p>
 										
 										<h3 id="mosaic-3-class">Mosaic 3: Class</h3>
 										<p>This autostitching also did better than my original.</p>
@@ -181,7 +181,7 @@ x= ax + by + c + gxx&#39; - hyx&#39; ]]</code></pre>
 										<p>The homography is much more true to the details of my classmates. I&#39;m very impressed!</p>
 										
 										<h2 class="major" id="what-i-have-learned-">What I have learned!</h2>
-										<p>I honestly wsa very suprised at how easy it was for this algorithm to detect corners in various situations. I was not expecting the loops of my friend&#39;s mural to work better than the very linear structure of doe. I learned a lot about what an algorithm is interested in looking at. All in all, this was one of the most fascinating projects I have ever done, and I&#39;m pretty proud of my work!</p>
+										<p>I honestly was very surprised at how easy it was for this algorithm to detect corners in various situations. I was not expecting the loops of my friend&#39;s mural to work better than the very linear structure of doe. I learned a lot about what an algorithm is interested in looking at. All in all, this was one of the most fascinating projects I have ever done, and I&#39;m pretty proud of my work!</p>
 									
 								
 

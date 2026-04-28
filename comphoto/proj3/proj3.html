@@ -19,7 +19,7 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a href="index.html">Eden McEwen</a></h1>
+						<h1><a href="/index.html">Eden McEwen</a></h1>
 						<nav>
 							<a href="#menu">Menu</a>
 						</nav>
@@ -30,8 +30,8 @@
 						<div class="inner">
 							<h2>Menu</h2>
 							<ul class="links">
-								<li><a href="../../index.html">Home</a></li>
-								<li><a href="research.html">Research</a></li>
+								<li><a href="/index.html">Home</a></li>
+								<li><a href="/research/research.html">Research</a></li>
 								<li><a href="cv.html">CV</a></li>
 							</ul>
 							<a href="#" class="close">Close</a>
@@ -58,7 +58,7 @@
 									<p>In this project I explore something my family has always pondered, how similar are me and my brother? I take our actual passport photos and morph them together using the techniques discussed in class. </p>
 									
 									<h2 class="major" id="part-1-defining-correspondences">Part 1: Defining Correspondences</h2>
-									<p>I first set up theinteractive system to define correspondences, keeping points in the same order per selection. the triangulation was computed on the midpoints of the two sets of points.</p>
+									<p>I first set up the interactive system to define correspondences, keeping points in the same order per selection. The triangulation was computed on the midpoints of the two sets of points.</p>
 									<div class="box alt">
 										<div class="row gtr-uniform">
 											<div class="col-6"><span class="image fit"><img src="img/A_tri.png" alt="" /></span></div>
@@ -67,8 +67,8 @@
 									</div>
 									
 									<h2 class="major" id="part-2-computing-the-mid-way-face-">Part 2: Computing the &quot;Mid-way Face&quot;</h2>
-									<p>Now that we have two sets of points, we need an operation to go between them. I set up my implementaion of the Affine matrix by taking two sets of triangle verticies, and back solving for the transformation matrix between them. </p>
-									<p>I then use this affine function to perfome an inverse warp. Instead of transforming each image pixel to the midway face, I take each pixel in the midway fave, filtered by which triangluation it belongs to, to warp to one of the two images. This ensures each pixel of the midway face is accounted for. Non-integer warps are delt with interpolation via a RectBivariateSpline.</p>
+									<p>Now that we have two sets of points, we need an operation to go between them. I set up my implementation of the Affine matrix by taking two sets of triangle vertices, and back solving for the transformation matrix between them. </p>
+									<p>I then use this affine function to perform an inverse warp. Instead of transforming each image pixel to the midway face, I take each pixel in the midway face, filtered by which triangulation it belongs to, to warp to one of the two images. This ensures each pixel of the midway face is accounted for. Non-integer warps are dealt with interpolation via a RectBivariateSpline.</p>
 									<p>After performing an inverse warp, we get the following two midway images ( here the warp fraction is 0.5).</p>
 									<p><img src="img/AB_morph.png" alt="Unblended midway morphs"></p>
 									<p>We then take a dissolve fraction of 0.5 to blend these two images together, like so:</p>
@@ -79,7 +79,7 @@
 									<p><img src="img/AB_morph.gif" alt="Morph Sequence"></p>
 									
 									<h2 class="major" id="part-4-the-mean-face-of-a-population">Part 4: The &quot;Mean face&quot; of a population</h2>
-									<p>What would I Look like as a Dane? In this section, I use the Danish face set, cited below, to morph my features to be a bit more danish.</p>
+									<p>What would I look like as a Dane? In this section, I use the Danish face set, cited below, to morph my features to be a bit more Danish.</p>
 									<p>M. B. Stegmann, B. K. Ersbøll, and R. Larsen. FAME – a flexible appearance modelling environment. IEEE Trans. on Medical Imaging, 22(10):1319–1331, 2003</p>
 									<h2 id="part-4a-population-mean">Part 4a: Population mean</h2>
 									<p>First, I pull points from the pre-label data set, and compute the average feature location using normalized pixel values. </p>
@@ -103,7 +103,7 @@
 									<p><img src="img/char.png" alt="Danes, less of them."></p>
 									
 									<h2 class="major" id="part-6-smiling-and-frowning-">Part 6: Smiling and frowning.</h2>
-									<p>I always regretted I didn&#39;t smile more in my passport photo! Using the similing portion of the danish dataset, I was able to rectify an old mistake. Similar to the characture above, I used apla to add a smile to my facial features:</p>
+									<p>I always regretted I didn&#39;t smile more in my passport photo! Using the smiling portion of the Danish dataset, I was able to rectify an old mistake. Similar to the caricature above, I used alpha to add a smile to my facial features:</p>
 									<p><img src="img/smile.png" alt="Danes, helping me smile."></p>
 									<p>I can also subtract one:</p>
 									<p><img src="img/frown.png" alt="Danes, helping me frown."></p>
