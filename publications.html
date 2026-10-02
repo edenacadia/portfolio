@@ -1,18 +1,12 @@
 <!DOCTYPE HTML>
-<!--
-	Solid State by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+<html lang="en">
 	<head>
 		<title>Publications</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/site.css" />
 	</head>
-	<body class="is-preload">
+	<body>
 
 		<!-- Page Wrapper -->
 			<div id="page-wrapper">
@@ -20,22 +14,20 @@
 				<!-- Header -->
 					<header id="header">
 						<h1><a href="/index.html">Eden McEwen</a></h1>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
+						<button class="nav-toggle" type="button" aria-controls="sidebar" aria-expanded="false"><span class="icon solid fa-bars" aria-hidden="true"></span>Menu</button>
 					</header>
 
 				<!-- Menu -->
-					<nav id="menu">
-						<div class="inner">
-							<h2>Menu</h2>
-							<ul class="links">
-								<li><a href="/index.html">Home</a></li>
-								<li><a href="/research/research.html">Research</a></li>
-								<li><a href="cv.html">CV</a></li>
-							</ul>
-							<a href="#" class="close">Close</a>
-						</div>
+					<nav id="sidebar" aria-label="Site">
+						<ul>
+							<li><a href="/index.html" data-nav="home">Home</a></li>
+							<li><a href="/research/research.html" data-nav="research">Research</a></li>
+							<li><a href="/publications.html" data-nav="publications">Publications</a></li>
+							<li><a href="/presentations.html" data-nav="presentations">Presentations</a></li>
+							<li><a href="/awards.html" data-nav="awards">Awards</a></li>
+							<li><a href="/comphoto/projects.html" data-nav="comphoto">Classwork</a></li>
+							<li><a href="#footer" data-nav="contact">Contact</a></li>
+						</ul>
 					</nav>
 
 				<!-- Wrapper -->
@@ -55,24 +47,65 @@
 							<div class="wrapper">
 								<div class="inner">
 
-									<h3 class="major"> Wavefront profiling via correlation of GLAO open loop telemetry</h3>
-									<p>SPIE 2022 Proceeding - <b>E. McEwen</b>, R. Dungee, M. Chun, O. Lai, C. Barnec</p>
-									<a href="http://dx.doi.org/10.1117/12.2629613 " class="special">Full Paper</a>
-									<p><span class="image left"><img src="images/publications/2022_McEwenProfiling.gif" alt="" /></span> Adaptive Optics (AO) used in ground based observatories can be strengthened in both design and algorithms by a more detailed understanding of the atmosphere they seek to correct. Nowhere is this more true than on Maunakea, where a clearer profile of the atmosphere informs AO system development from the small separations of Extreme AO (ExAO) to the wide field Ground Layer AO (GLAO). Employing telemetry obtained from the ımaka GLAO demonstrator on the University of Hawaii 2.2-meter telescope, we apply a wind profiling method that identifies turbulent layer velocities through spatial-temporal cross correlations of multiple wavefront sensors (WFSs). We compare the derived layer velocities with nearby wind anemometer data and meteorological model predictions of the upper wind speeds and discuss similarities and differences. The strengths and limitations of this profiling method are evaluated through successful recovery of injected, simulated layers into real telemetry. We detail the profilers’ results, including the percentage of data with viable estimates, on four characteristic ımaka observing runs on open loop telemetry throughout both winter and summer targets. We report on how similar layers are to external measures, the confidence of these results, and the potential for future use of this technique on other multi conjugate AO systems.</p>
+									<h2 class="major">Selected Papers</h2>
+
+									<article class="entry">
+										<h3 class="major"> Wavefront profiling via correlation of GLAO open loop telemetry</h3>
+										<p class="meta">SPIE 2022 Proceeding - <b>E. McEwen</b>, R. Dungee, M. Chun, O. Lai, C. Barnec</p>
+										<a href="http://dx.doi.org/10.1117/12.2629613 " class="special">Full Paper</a>
+										<p><span class="image left"><img src="images/publications/2022_McEwenProfiling.gif" alt="Animated cross-correlation maps between wavefront sensor pairs from the imaka wind profiling paper" /></span> Adaptive Optics (AO) used in ground based observatories can be strengthened in both design and algorithms by a more detailed understanding of the atmosphere they seek to correct. Nowhere is this more true than on Maunakea, where a clearer profile of the atmosphere informs AO system development from the small separations of Extreme AO (ExAO) to the wide field Ground Layer AO (GLAO). Employing telemetry obtained from the ımaka GLAO demonstrator on the University of Hawaii 2.2-meter telescope, we apply a wind profiling method that identifies turbulent layer velocities through spatial-temporal cross correlations of multiple wavefront sensors (WFSs). We compare the derived layer velocities with nearby wind anemometer data and meteorological model predictions of the upper wind speeds and discuss similarities and differences. The strengths and limitations of this profiling method are evaluated through successful recovery of injected, simulated layers into real telemetry. We detail the profilers’ results, including the percentage of data with viable estimates, on four characteristic ımaka observing runs on open loop telemetry throughout both winter and summer targets. We report on how similar layers are to external measures, the confidence of these results, and the potential for future use of this technique on other multi conjugate AO systems.</p>
+									</article>
 									
 
-									<h3 class="major"> Demonstrating predictive wavefront control with the Keck II near-infrared pyramid wavefront sensor</h3>
-									<p>SPIE 2019 Proceeding - R. Jensen-Clem, C. Z. Bond, S. Cetre, <b>E. McEwen</b>, P. Wizinowich, S. Ragland, D. Mawet, J. Graham</p>
-									<a href="http://dx.doi.org/10.1117/12.2529687" class="special">Full Paper</a>
-									<p><span class="image left"><img src="images/publications/2019_JensenCLem.png" alt="" /></span>The success of ground-based instruments for high contrast exoplanet imaging depends on the degree to which adaptive optics (AO) systems can mitigate atmospheric turbulence. While modern AO systems typically suffer from millisecond time lags between wavefront measurement and control, predictive wavefront control (pWFC) is a means of compensating for those time lags using previous wavefront measurements, thereby improving the raw contrast in the post-coronagraphic science focal plane. A method of predictive control based on Empirical Orthogonal Functions (EOF) has previously been proposed and demonstrated on Subaru/SCExAO. In this paper we present initial tests of this method for application to the near-infrared pyramid wavefront sensor (PYWFS) recently installed in the Keck II AO system. We demonstrate the expected root-mean-square (RMS) wavefront error and contrast benefits of pWFC based on simulations, applying pWFC to on-sky telemetry data saved during commissioning of the PYWFS. We discuss how the performance varies as different temporal and spatial scales are included in the computation of the predictive filter. We further describe the implementation of EOF pWFC within the PYWFS dedicated real-time controller (RTC), and, via daytime testing at the observatory, we demonstrate the performance of pWFC in real time when pre-computed phase screens are applied to the deformable mirror (DM).</p>
+									<article class="entry">
+										<h3 class="major"> Demonstrating predictive wavefront control with the Keck II near-infrared pyramid wavefront sensor</h3>
+										<p class="meta">SPIE 2019 Proceeding - R. Jensen-Clem, C. Z. Bond, S. Cetre, <b>E. McEwen</b>, P. Wizinowich, S. Ragland, D. Mawet, J. Graham</p>
+										<a href="http://dx.doi.org/10.1117/12.2529687" class="special">Full Paper</a>
+										<p><span class="image left"><img src="images/publications/2019_JensenCLem.png" alt="Figure from the Keck II predictive wavefront control paper" /></span>The success of ground-based instruments for high contrast exoplanet imaging depends on the degree to which adaptive optics (AO) systems can mitigate atmospheric turbulence. While modern AO systems typically suffer from millisecond time lags between wavefront measurement and control, predictive wavefront control (pWFC) is a means of compensating for those time lags using previous wavefront measurements, thereby improving the raw contrast in the post-coronagraphic science focal plane. A method of predictive control based on Empirical Orthogonal Functions (EOF) has previously been proposed and demonstrated on Subaru/SCExAO. In this paper we present initial tests of this method for application to the near-infrared pyramid wavefront sensor (PYWFS) recently installed in the Keck II AO system. We demonstrate the expected root-mean-square (RMS) wavefront error and contrast benefits of pWFC based on simulations, applying pWFC to on-sky telemetry data saved during commissioning of the PYWFS. We discuss how the performance varies as different temporal and spatial scales are included in the computation of the predictive filter. We further describe the implementation of EOF pWFC within the PYWFS dedicated real-time controller (RTC), and, via daytime testing at the observatory, we demonstrate the performance of pWFC in real time when pre-computed phase screens are applied to the deformable mirror (DM).</p>
+									</article>
 									
-									<h3 class="major"> The Keck Planet Imager and Characterizer: Demonstrating advanced exoplanet characterization techniques for future extremely large telescopes</h3>
-									<p>SPIE 2019 Proceeding - N.Jovanovic, J. R. Delorme, C. Z. Bond, S. Cetre, D. Mawet, D. Echeverri, J. K. Wallace, R. Bartos, S. Lilley, S. Ragland, G. Ruane, P. Wizinowich, M. Chun, J. Wang, J. Wang, M. Fitzgerald, K. Matthews, J. Pezzato, B. Calvin, M. Millar-Blanchaer, E. C. Martin, E. Wetherell, E. Wang, S. Jacobson, E. Warmbier, C. Lockhart, D. Hall, R. Jensen-Clem, <b>E. McEwen</b></p>
-									<a href="https://doi.org/10.48550/arXiv.1909.04541" class="special">Full Paper</a>
-									<p> <span class="image left"><img src="images/publications/2019_KPIC.jpeg" alt="" /></span>The Keck Planet Imager and Characterizer (KPIC) is an upgrade to the Keck II adaptive optics system enabling high contrast imaging and high-resolution spectroscopic characterization of giant exoplanets in the mid-infrared (2-5 microns). The KPIC instrument will be developed in phases. Phase I entails the installation of an infrared pyramid wavefront sensor (PyWFS) based on a fast, low-noise SAPHIRA IR-APD array. The ultra-sensitive infrared PyWFS will enable high contrast studies of infant exoplanets around cool, red, and/or obscured targets in star forming regions. In addition, the light downstream of the PyWFS will be coupled into an array of single-mode fibers with the aid of an active fiber injection unit (FIU). In turn, these fibers route light to Keck's high-resolution infrared spectrograph NIRSPEC, so that high dispersion coronagraphy (HDC) can be implemented for the first time. HDC optimally pairs high contrast imaging and high-resolution spectroscopy allowing detailed characterization of exoplanet atmospheres, including molecular composition, spin measurements, and Doppler imaging.
+									<article class="entry">
+										<h3 class="major"> The Keck Planet Imager and Characterizer: Demonstrating advanced exoplanet characterization techniques for future extremely large telescopes</h3>
+										<p class="meta">SPIE 2019 Proceeding - N.Jovanovic, J. R. Delorme, C. Z. Bond, S. Cetre, D. Mawet, D. Echeverri, J. K. Wallace, R. Bartos, S. Lilley, S. Ragland, G. Ruane, P. Wizinowich, M. Chun, J. Wang, J. Wang, M. Fitzgerald, K. Matthews, J. Pezzato, B. Calvin, M. Millar-Blanchaer, E. C. Martin, E. Wetherell, E. Wang, S. Jacobson, E. Warmbier, C. Lockhart, D. Hall, R. Jensen-Clem, <b>E. McEwen</b></p>
+										<a href="https://doi.org/10.48550/arXiv.1909.04541" class="special">Full Paper</a>
+										<p> <span class="image left"><img src="images/publications/2019_KPIC.jpeg" alt="The Keck Planet Imager and Characterizer instrument" /></span>The Keck Planet Imager and Characterizer (KPIC) is an upgrade to the Keck II adaptive optics system enabling high contrast imaging and high-resolution spectroscopic characterization of giant exoplanets in the mid-infrared (2-5 microns). The KPIC instrument will be developed in phases. Phase I entails the installation of an infrared pyramid wavefront sensor (PyWFS) based on a fast, low-noise SAPHIRA IR-APD array. The ultra-sensitive infrared PyWFS will enable high contrast studies of infant exoplanets around cool, red, and/or obscured targets in star forming regions. In addition, the light downstream of the PyWFS will be coupled into an array of single-mode fibers with the aid of an active fiber injection unit (FIU). In turn, these fibers route light to Keck's high-resolution infrared spectrograph NIRSPEC, so that high dispersion coronagraphy (HDC) can be implemented for the first time. HDC optimally pairs high contrast imaging and high-resolution spectroscopy allowing detailed characterization of exoplanet atmospheres, including molecular composition, spin measurements, and Doppler imaging.
 											Here we provide an overview of the instrument, its science scope, and report on recent results from on-sky commissioning of Phase I. The instrument design and techniques developed will be key for more advanced instrument concepts needed for the extremely large telescopes of the future. </p>
+									</article>
 	
 
+								</div>
+							</div>
+
+							<div class="wrapper alt">
+								<div class="inner">
+									<h2 class="major" id="proceedings">Conference Proceedings</h2>
+									<ol class="pub-list">
+										<li><span class="authors"><b>E. McEwen</b>, J. Males, O. Guyon, S. Haffert, et al.</span> &ldquo;Comparing realtime optical gain measurement and methods on MagAO-X,&rdquo; <span class="venue">2026. Proc. SPIE 14150, Adaptive Optics Systems X.</span></li>
+										<li><span class="authors"><b>E. McEwen</b>, J. Males, O. Guyon, S. Haffert, et al.</span> &ldquo;On-sky, real-time optical gain calibration on MagAO-X using incoherent speckles,&rdquo; <span class="venue">2024. Proc. SPIE 13097-130970U, Adaptive Optics Systems IX.</span></li>
+										<li><span class="authors">Skaf, N. et al. (<b>E. McEwen</b> 13 of 22)</span> &ldquo;Real-time control and data standardization on various telescopes and benches,&rdquo; <span class="venue">SPIE Astronomical Telescope and Instrumentation 2024, Art. no. arXiv:2409.13126, 2024.</span> <a href="https://doi.org/10.48550/arXiv.2409.13126">doi:10.48550/arXiv.2409.13126</a></li>
+										<li><span class="authors">Kueny, J. K. (<b>E. McEwen</b> 8 of 17)</span> &ldquo;MagAO-X phase II upgrades: implementation and first on-sky results of a new post-AO 1000 actuator deformable mirror,&rdquo; <span class="venue">Proc. SPIE, 2024, vol. 13097, Art. no. 1309761.</span> <a href="https://doi.org/10.1117/12.3018080">doi:10.1117/12.3018080</a></li>
+										<li><span class="authors">Li, J. (<b>E. McEwen</b> 13 of 22)</span> &ldquo;Challenge of direct imaging of exoplanets within structures: disentangling real signal from point source from background light,&rdquo; <span class="venue">Proc. SPIE, 2024, vol. 13097, Art. no. 1309714.</span> <a href="https://doi.org/10.1117/12.3020333">doi:10.1117/12.3020333</a></li>
+										<li><span class="authors">Long, J. D. (<b>E. McEwen</b> 9 of 20)</span> &ldquo;More data than you want, fewer data than you need: machine learning approaches to starlight subtraction with MagAO-X,&rdquo; <span class="venue">Proc. SPIE, 2024, vol. 13097, Art. no. 130972X.</span> <a href="https://doi.org/10.1117/12.3018424">doi:10.1117/12.3018424</a></li>
+										<li><span class="authors">Males, J. R. (<b>E. McEwen</b> 7 of 23)</span> &ldquo;MagAO-X: commissioning results and status of ongoing upgrades,&rdquo; <span class="venue">Proc. SPIE, 2024, vol. 13097, Art. no. 1309709.</span> <a href="https://doi.org/10.1117/12.3019464">doi:10.1117/12.3019464</a></li>
+										<li><span class="authors">S. Haffert, J. Males, L. Close et al. (<b>E. McEwen</b> 11 of 18)</span> &ldquo;MagAO-X: a pathfinder for GMT to operate extreme adaptive optics at the photon noise limit,&rdquo; <span class="venue">2023. Proc. SPIE 12680, Techniques and Instrumentation for Detection of Exoplanets XI, 1268008.</span></li>
+										<li><span class="authors">J. A. Johnson, A. Vaz, et al. (<b>E. McEwen</b> 16 of 26)</span> &ldquo;MAPS Adaptive Secondary Mirror: First Light, Laboratory Work, and Achievements,&rdquo; <span class="venue">2023 Proc. SPIE 12693-126930F.</span></li>
+										<li><span class="authors"><b>E. McEwen</b>, R. Dungee, M. Chun, J. Lu, O. Lai, C. Baranec</span> &ldquo;Wavefront profiling via correlation of GLAO open loop telemetry,&rdquo; <span class="venue">2022. Proc. SPIE 12185-121855U, Adaptive Optics Systems VII.</span> <a href="https://doi.org/10.1117/12.2629613">doi:10.1117/12.2629613</a></li>
+										<li><span class="authors">R. Jensen-Clem, C. Z. Bond, S. Cetre, <b>E. McEwen</b>, P. Wizinowich, S. Ragland, D. Mawet, J. Graham</span> &ldquo;Demonstrating predictive wavefront control with the Keck II near-infrared pyramid wavefront sensor,&rdquo; <span class="venue">2019, SPIE, Paper 11117-34.</span> <a href="https://doi.org/10.1117/12.2529687">doi:10.1117/12.2529687</a></li>
+										<li><span class="authors">N. Jovanovic et al. (<b>E. McEwen</b> 27 of 27)</span> &ldquo;The Keck Planet Imager and Characterizer: Demonstrating advanced exoplanet characterization techniques for future extremely large telescopes,&rdquo; <span class="venue">2019, SPIE, Paper 11117-31.</span> <a href="https://doi.org/10.48550/arXiv.1909.04541">doi:10.48550/arXiv.1909.04541</a></li>
+										<li><span class="authors">Pezzato, J., N. Jovanovic, D. Mawet et al. (<b>E. McEwen</b> 15 of 18)</span> &ldquo;Status of the Keck Planet Imager and Characterizer Phase II Development,&rdquo; <span class="venue">2019, Proc. SPIE. 11117</span></li>
+									</ol>
+
+									<h2 class="major" id="journal-articles">Journal Articles</h2>
+									<ol class="pub-list">
+										<li><span class="authors">Males, J. R., et al. (<b>E. McEwen</b> 7 of 19)</span> &ldquo;The eXtreme Wavefront Control Toolkit: High-Contrast Imaging Instrument Control for Ground and Space-Based Coronagraphs,&rdquo; <span class="venue">arXiv, Aug. 2026.</span> <a href="https://doi.org/10.48550/arXiv.2608.10156">doi:10.48550/arXiv.2608.10156</a></li>
+										<li><span class="authors">Li, J., et al. (<b>E. McEwen</b> 23 of 35)</span> &ldquo;Discovery of H&alpha; Emission from a Protoplanet Candidate around the Young Star 2MASS J16120668&ndash;3010270 with MagAO-X,&rdquo; <span class="venue">The Astrophysical Journal Letters, vol. 990, p. L70, Sep. 2025.</span> <a href="https://doi.org/10.3847/2041-8213/adfcbd">doi:10.3847/2041-8213/adfcbd</a></li>
+										<li><span class="authors">Close, L. M., et al. (<b>E. McEwen</b> 27 of 37)</span> &ldquo;Wide Separation Planets in Time (WISPIT): Discovery of a Gap H&alpha; Protoplanet WISPIT 2b with MagAO-X,&rdquo; <span class="venue">The Astrophysical Journal Letters, vol. 990, p. L9, Sep. 2025.</span> <a href="https://doi.org/10.3847/2041-8213/adf7a5">doi:10.3847/2041-8213/adf7a5</a></li>
+										<li><span class="authors">Pearce, L. A., et al. (<b>E. McEwen</b> 6 of 23)</span> &ldquo;Five New Sirius-like White Dwarf&ndash;Main-sequence Star Systems with MagAO-X,&rdquo; <span class="venue">The Astronomical Journal, vol. 170, p. 58, Jul. 2025.</span> <a href="https://doi.org/10.3847/1538-3881/addb50">doi:10.3847/1538-3881/addb50</a></li>
+										<li><span class="authors">Liu, P. (<b>E. McEwen</b> 26 of 30)</span> &ldquo;The Young Suns Exoplanet Survey: An exoplanet candidate imaged around YSES 3,&rdquo; <span class="venue">Astronomy &amp; Astrophysics, Volume 699, id.A78, 16 pp. July 2025.</span> <a href="https://doi.org/10.1051/0004-6361/202449582">doi:10.1051/0004-6361/202449582</a></li>
+										<li><span class="authors">Close, L. M. et al. (<b>E. McEwen</b> 19 of 26)</span> &ldquo;Three Years of High-Contrast Imaging of the PDS 70 b and c Exoplanets at H&alpha; with MagAO-X: Evidence of Strong Protoplanet H&alpha;,&rdquo; <span class="venue">The Astronomical Journal, Volume 169, Issue 1, id.35, 29 pp., (January 2025)</span> <a href="https://doi.org/10.3847/1538-3881/ad8648">doi:10.3847/1538-3881/ad8648</a></li>
+										<li><span class="authors">Kautz, M., et al. (<b>E. McEwen</b> 19 of 24)</span> &ldquo;Phasing the Giant Magellan Telescope: Lab Experiments and First 2 On-sky Demonstration,&rdquo; <span class="venue">J. Astron. Telesc. Instrum. Syst. (October 2024)</span></li>
+										<li><span class="authors">Landman, R., et al. (<b>E. McEwen</b> 13 of 15)</span> &ldquo;Making the unmodulated Pyramid wavefront sensor smart. Closed-loop demonstration of neural network wavefront reconstruction with MagAO-X,&rdquo; <span class="venue">Astronomy and Astrophysics, vol. 684, Art. no. A114, 2024.</span> <a href="https://doi.org/10.1051/0004-6361/202348898">doi:10.1051/0004-6361/202348898</a></li>
+									</ol>
 								</div>
 							</div>
 
@@ -82,7 +115,7 @@
 				<section id="footer">
 					<div class="inner">
 						<h2 class="major">Get in touch</h2>
-						<p></p>
+						<p>Interested in adaptive optics, MagAO-X, or working together? Send me a note.</p>
 						<form method="post" action="#">
 							<div class="fields">
 								<div class="field">
@@ -110,12 +143,12 @@
 								1630 E. University Blvd.<br />
 							</li>
 							<li class="icon solid fa-phone">(520) 222-8755</li>
-							<li class="icon solid fa-envelope"><a href="#">website@edens.email</a></li>
-							<li class="icon brands fa-twitter"><a href="#">twitter.com/edenacadia</a></li>
-							<li class="icon brands fa-github"><a href="#">https://github.com/edenacadia</a></li>
+							<li class="icon solid fa-envelope"><a href="mailto:website@edens.email">website@edens.email</a></li>
+							<li class="icon brands fa-twitter"><a href="https://twitter.com/edenacadia">twitter.com/edenacadia</a></li>
+							<li class="icon brands fa-github"><a href="https://github.com/edenacadia">https://github.com/edenacadia</a></li>
 						</ul>
 						<ul class="copyright">
-							<li>&copy; 2023 Eden McEwen. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							<li>&copy; 2026 Eden McEwen. All rights reserved.</li>
 						</ul>
 					</div>
 				</section>
@@ -123,12 +156,7 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="assets/js/site.js"></script>
 
 	</body>
 </html>

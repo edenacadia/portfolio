@@ -1,18 +1,12 @@
 <!DOCTYPE HTML>
-<!--
-	Solid State by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+<html lang="en">
 	<head>
 		<title>imaka wavelength profiling</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../assets/css/site.css" />
 	</head>
-	<body class="is-preload">
+	<body>
 
 		<!-- Page Wrapper -->
 			<div id="page-wrapper">
@@ -20,22 +14,20 @@
 				<!-- Header -->
 					<header id="header">
 						<h1><a href="/index.html">Eden McEwen</a></h1>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
+						<button class="nav-toggle" type="button" aria-controls="sidebar" aria-expanded="false"><span class="icon solid fa-bars" aria-hidden="true"></span>Menu</button>
 					</header>
 
 				<!-- Menu -->
-					<nav id="menu">
-						<div class="inner">
-							<h2>Menu</h2>
-							<ul class="links">
-								<li><a href="/index.html">Home</a></li>
-								<li><a href="/research/research.html">Research</a></li>
-								<li><a href="../cv.html">CV</a></li>
-							</ul>
-							<a href="#" class="close">Close</a>
-						</div>
+					<nav id="sidebar" aria-label="Site">
+						<ul>
+							<li><a href="/index.html" data-nav="home">Home</a></li>
+							<li><a href="/research/research.html" data-nav="research">Research</a></li>
+							<li><a href="/publications.html" data-nav="publications">Publications</a></li>
+							<li><a href="/presentations.html" data-nav="presentations">Presentations</a></li>
+							<li><a href="/awards.html" data-nav="awards">Awards</a></li>
+							<li><a href="/comphoto/projects.html" data-nav="comphoto">Classwork</a></li>
+							<li><a href="#footer" data-nav="contact">Contact</a></li>
+						</ul>
 					</nav>
 
 				<!-- Wrapper -->
@@ -61,16 +53,16 @@
 
 									<section class="features">
 										<article>
-											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
+											<a aria-disabled="true" tabindex="-1" href="#" class="is-unavailable image"><img src="../images/pic04.jpg" alt="" /></a>
 											<h3 class="major">Sed feugiat lorem</h3>
 											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
+											<a aria-disabled="true" tabindex="-1" href="#" class="is-unavailable special">Learn more</a>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
+											<a aria-disabled="true" tabindex="-1" href="#" class="is-unavailable image"><img src="../images/pic05.jpg" alt="" /></a>
 											<h3 class="major">Nisl placerat</h3>
 											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
+											<a aria-disabled="true" tabindex="-1" href="#" class="is-unavailable special">Learn more</a>
 										</article>
 									</section>
 
@@ -83,7 +75,7 @@
 				<section id="footer">
 					<div class="inner">
 						<h2 class="major">Get in touch</h2>
-						<p></p>
+						<p>Interested in adaptive optics, MagAO-X, or working together? Send me a note.</p>
 						<form method="post" action="#">
 							<div class="fields">
 								<div class="field">
@@ -111,12 +103,12 @@
 								1630 E. University Blvd.<br />
 							</li>
 							<li class="icon solid fa-phone">(520) 222-8755</li>
-							<li class="icon solid fa-envelope"><a href="#">website@edens.email</a></li>
-							<li class="icon brands fa-twitter"><a href="#">twitter.com/edenacadia</a></li>
-							<li class="icon brands fa-github"><a href="#">https://github.com/edenacadia</a></li>
+							<li class="icon solid fa-envelope"><a href="mailto:website@edens.email">website@edens.email</a></li>
+							<li class="icon brands fa-twitter"><a href="https://twitter.com/edenacadia">twitter.com/edenacadia</a></li>
+							<li class="icon brands fa-github"><a href="https://github.com/edenacadia">https://github.com/edenacadia</a></li>
 						</ul>
 						<ul class="copyright">
-							<li>&copy; 2023 Eden McEwen. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							<li>&copy; 2026 Eden McEwen. All rights reserved.</li>
 						</ul>
 					</div>
 				</section>
@@ -124,12 +116,7 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="../assets/js/site.js"></script>
 
 	</body>
 </html>

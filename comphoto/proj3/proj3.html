@@ -1,18 +1,12 @@
 <!DOCTYPE HTML>
-<!--
-	Solid State by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+<html lang="en">
 	<head>
 		<title>Face Morphing</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../../assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../../assets/css/site.css" />
 	</head>
-	<body class="is-preload">
+	<body>
 
 		<!-- Page Wrapper -->
 			<div id="page-wrapper">
@@ -20,22 +14,20 @@
 				<!-- Header -->
 					<header id="header">
 						<h1><a href="/index.html">Eden McEwen</a></h1>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
+						<button class="nav-toggle" type="button" aria-controls="sidebar" aria-expanded="false"><span class="icon solid fa-bars" aria-hidden="true"></span>Menu</button>
 					</header>
 
 				<!-- Menu -->
-					<nav id="menu">
-						<div class="inner">
-							<h2>Menu</h2>
-							<ul class="links">
-								<li><a href="/index.html">Home</a></li>
-								<li><a href="/research/research.html">Research</a></li>
-								<li><a href="cv.html">CV</a></li>
-							</ul>
-							<a href="#" class="close">Close</a>
-						</div>
+					<nav id="sidebar" aria-label="Site">
+						<ul>
+							<li><a href="/index.html" data-nav="home">Home</a></li>
+							<li><a href="/research/research.html" data-nav="research">Research</a></li>
+							<li><a href="/publications.html" data-nav="publications">Publications</a></li>
+							<li><a href="/presentations.html" data-nav="presentations">Presentations</a></li>
+							<li><a href="/awards.html" data-nav="awards">Awards</a></li>
+							<li><a href="/comphoto/projects.html" data-nav="comphoto">Classwork</a></li>
+							<li><a href="#footer" data-nav="contact">Contact</a></li>
+						</ul>
 					</nav>
 
 				<!-- Wrapper -->
@@ -54,6 +46,20 @@
 						<!-- Content -->
 							<div class="wrapper">
 								<div class="inner">
+								<nav class="page-toc" aria-label="On this page">
+									<ul>
+										<li><a href="#part-1-defining-correspondences">Part 1: Defining Correspondences</a></li>
+										<li><a href="#part-2-computing-the-mid-way-face-">Part 2: Computing the &quot;Mid-way Face&quot;</a></li>
+										<li><a href="#part-3-the-morph-sequence">Part 3: The Morph Sequence</a></li>
+										<li><a href="#part-4-the-mean-face-of-a-population">Part 4: The &quot;Mean face&quot; of a population</a></li>
+										<li><a href="#part-4a-population-mean">Part 4a: Population mean</a></li>
+										<li><a href="#part-4b-me-on-the-mean-">Part 4b: Me on the mean!</a></li>
+										<li><a href="#part-5-caricatures-extrapolating-from-the-mean">Part 5: Caricatures: Extrapolating from the mean</a></li>
+										<li><a href="#part-6-smiling-and-frowning-">Part 6: Smiling and frowning.</a></li>
+										<li><a href="#conclusion">Conclusion</a></li>
+									</ul>
+								</nav>
+
 
 									<p>In this project I explore something my family has always pondered, how similar are me and my brother? I take our actual passport photos and morph them together using the techniques discussed in class. </p>
 									
@@ -61,8 +67,8 @@
 									<p>I first set up the interactive system to define correspondences, keeping points in the same order per selection. The triangulation was computed on the midpoints of the two sets of points.</p>
 									<div class="box alt">
 										<div class="row gtr-uniform">
-											<div class="col-6"><span class="image fit"><img src="img/A_tri.png" alt="" /></span></div>
-											<div class="col-6"><span class="image fit"><img src="img/B_tri.png" alt="" /></span></div>
+											<div class="col-6"><span class="image fit"><img src="img/A_tri.png" alt="Triangulated correspondence points on the first face" /></span></div>
+											<div class="col-6"><span class="image fit"><img src="img/B_tri.png" alt="Triangulated correspondence points on the second face" /></span></div>
 										</div>
 									</div>
 									
@@ -121,7 +127,7 @@
 				<section id="footer">
 					<div class="inner">
 						<h2 class="major">Get in touch</h2>
-						<p></p>
+						<p>Interested in adaptive optics, MagAO-X, or working together? Send me a note.</p>
 						<form method="post" action="#">
 							<div class="fields">
 								<div class="field">
@@ -149,12 +155,12 @@
 								1630 E. University Blvd.<br />
 							</li>
 							<li class="icon solid fa-phone">(520) 222-8755</li>
-							<li class="icon solid fa-envelope"><a href="#">website@edens.email</a></li>
-							<li class="icon brands fa-twitter"><a href="#">twitter.com/edenacadia</a></li>
-							<li class="icon brands fa-github"><a href="#">https://github.com/edenacadia</a></li>
+							<li class="icon solid fa-envelope"><a href="mailto:website@edens.email">website@edens.email</a></li>
+							<li class="icon brands fa-twitter"><a href="https://twitter.com/edenacadia">twitter.com/edenacadia</a></li>
+							<li class="icon brands fa-github"><a href="https://github.com/edenacadia">https://github.com/edenacadia</a></li>
 						</ul>
 						<ul class="copyright">
-							<li>&copy; 2023 Eden McEwen. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							<li>&copy; 2026 Eden McEwen. All rights reserved.</li>
 						</ul>
 					</div>
 				</section>
@@ -162,12 +168,7 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="../../assets/js/site.js"></script>
 
 	</body>
 </html>
