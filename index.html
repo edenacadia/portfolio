@@ -1,72 +1,70 @@
 <!DOCTYPE HTML>
-<!--
-	Solid State by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+<html lang="en">
 	<head>
 		<title>Eden McEwen</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/site.css" />
 	</head>
-	<body class="is-preload">
+	<body>
 
 		<!-- Page Wrapper -->
 			<div id="page-wrapper">
 
 				<!-- Header -->
-					<header id="header" class="alt">
+					<header id="header">
 						<h1><a href="/index.html">Eden McEwen</a></h1>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
+						<button class="nav-toggle" type="button" aria-controls="sidebar" aria-expanded="false"><span class="icon solid fa-bars" aria-hidden="true"></span>Menu</button>
 					</header>
 
 				<!-- Menu -->
-					<nav id="menu">
-						<div class="inner">
-							<h2>Menu</h2>
-							<ul class="links">
-								<li><a href="/index.html">Home</a></li>
-								<li><a href="/research/research.html">Research</a></li>
-								<li><a href="publications.html">Publications</a></li>
-							</ul>
-							<a href="#" class="close">Close</a>
-						</div>
+					<nav id="sidebar" aria-label="Site">
+						<ul>
+							<li><a href="/index.html" data-nav="home">Home</a></li>
+							<li><a href="/research/research.html" data-nav="research">Research</a></li>
+							<li><a href="/publications.html" data-nav="publications">Publications</a></li>
+							<li><a href="/presentations.html" data-nav="presentations">Presentations</a></li>
+							<li><a href="/awards.html" data-nav="awards">Awards</a></li>
+							<li><a href="/comphoto/projects.html" data-nav="comphoto">Classwork</a></li>
+							<li><a href="#footer" data-nav="contact">Contact</a></li>
+						</ul>
 					</nav>
 
 				<!-- Banner -->
-					<section id="banner">
-						<div class="inner">
-							<div class="logo"><span class="icon fa-star"></span></div>
+					<section id="banner" class="hero">
+						<div class="hero-card">
+							<div class="logo"><span class="icon solid fa-star" aria-hidden="true"></span></div>
 							<h2>Eden McEwen</h2>
-							<p>PhD Student at University of Arizona</h1></p>
+							<p>PhD Student at University of Arizona</p>
 						</div>
 					</section>
 
 				<!-- Wrapper -->
-					<section id="wrapper">
+					<main id="wrapper">
 
 						<!-- One -->
-							<section id="one" class="wrapper spotlight style1">
+							<section id="one" class="section about">
 								<div class="inner">
-									<a href="#" class="image"><img src="images/avatar.png" alt="" /></a>
 									<div class="content">
 										<h2 class="major">About Me</h2>
 										<p>I am a graduate student at the University of Arizona as a University Fellow and NSF Graduate Fellow. 
 											I work on the MagAO-X extreme adaptive optics instrument, capable of directly imaging planets around other stars.
 											My research interests lie in novel adaptive optics techniques, from predictive control, ground based control, and now high performance calibrations.</p>
+										<ul class="profile-links">
+											<li><a href="https://github.com/edenacadia" class="icon brands fa-github">GitHub</a></li>
+											<li><a href="https://twitter.com/edenacadia" class="icon brands fa-twitter">Twitter</a></li>
+											<li><a href="mailto:website@edens.email" class="icon solid fa-envelope">Email</a></li>
+											<li><a href="https://orcid.org/0000-0003-0843-5140" class="icon brands fa-orcid">ORCID</a></li>
+										</ul>
 									</div>
+									<div class="portrait"><img src="images/avatar.png" alt="Portrait of Eden McEwen" /></div>
 								</div>
 							</section>
 
 						<!-- Two -->
-							<section id="two" class="wrapper alt spotlight style2">
+							<section id="two" class="section spotlight flip">
 								<div class="inner">
-									<a href="#" class="image"><img src="images/presentations/conf_gmto.jpg" alt="" /></a>
+									<a href="presentations.html" class="image"><img src="images/presentations/conf_gmto.jpg" alt="Eden presenting a poster at the Giant Magellan Telescope Community Science Meeting" /></a>
 									<div class="content">
 										<h2 class="major">Publications and Presentations</h2>
 										<p>Want to check out my most recent work? I keep a list of my public appearances here so you don't have to work Google too hard. </p>
@@ -77,9 +75,9 @@
 							</section>
 
 						<!-- Three -->
-							<section id="three" class="wrapper spotlight style3">
+							<section id="three" class="section spotlight">
 								<div class="inner">
-									<a href="comphoto/projects.html" class="image"><img src="comphoto/proj3/FRACTED.png" alt="" /></a>
+									<a href="comphoto/projects.html" class="image"><img src="comphoto/proj3/FRACTED.png" alt="Face morphing results from the computational photography projects" /></a>
 									<div class="content">
 										<h2 class="major">Computational Photography Blogs</h2>
 										<p>One of the last classes I took in undergrad was an image processing lecture. Though these were class projects and heavily guided, they ended up extremely interesting! Here I've archived those projects, whose techniques are universally useful.</p>
@@ -89,34 +87,34 @@
 							</section>
 
 						<!-- Four -->
-							<section id="four" class="wrapper alt style1">
+							<section id="four" class="section">
 								<div class="inner">
 									<h2 class="major">Research Projects</h2>
 									<p>Listed below are some of the research projects I've worked on. </p>
-									<section class="features">
+									<section class="features four-up">
 										<article>
-											<a href="#" class="image"><img src="images/research/magellan_tel_small.jpg" alt="" /></a>
+											<a aria-disabled="true" tabindex="-1" href="research/magaox.html" class="is-unavailable image"><img src="images/research/magellan_tel_small.jpg" alt="The Magellan telescopes at Las Campanas Observatory" /></a>
 											<h3 class="major">Extreme AO with MagAO-X</h3>
 											<p>Using incoherent sparkles to calibrate pyramid WFS.</p>
-											<a href="research/magaox.html" class="special">Learn more</a>
+											<a aria-disabled="true" tabindex="-1" href="research/magaox.html" class="is-unavailable special">Learn more</a>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/research/tel_uh88_small.png" alt="" /></a>
+											<a href="research/imaka_4f.html" class="image"><img src="images/research/tel_uh88_small.png" alt="The University of Hawaii 2.2-meter telescope on Maunakea" /></a>
 											<h3 class="major">Ground Layer AO on 'imaka</h3>
 											<p>Comparing performance across four wavelengths to show GLAO performance into the blue.</p>
 											<a href="research/imaka_4f.html" class="special">Learn more</a>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/research/tel_CFHT_small.png" alt="" /></a>
+											<a aria-disabled="true" tabindex="-1" href="research/imaka_wp.html" class="is-unavailable image"><img src="images/research/tel_CFHT_small.png" alt="The Canada-France-Hawaii Telescope on Maunakea" /></a>
 											<h3 class="major">Wind profiling with AO telemetry</h3>
 											<p>Using GLAO look telemetry to predict wind direction, speed, and height</p>
-											<a href="research/imaka_wp.html" class="special">Learn more</a>
+											<a aria-disabled="true" tabindex="-1" href="research/imaka_wp.html" class="is-unavailable special">Learn more</a>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/research/tel_keck_small.png" alt="" /></a>
+											<a aria-disabled="true" tabindex="-1" href="research/keck_predictive.html" class="is-unavailable image"><img src="images/research/tel_keck_small.png" alt="The W. M. Keck Observatory domes on Maunakea" /></a>
 											<h3 class="major">Predictive control on Keck II</h3>
 											<p>Working with Empirically orthogonal Functions to implement predictive AO control on Keck.</p>
-											<a href="research/keck_predictive.html" class="special">Learn more</a>
+											<a aria-disabled="true" tabindex="-1" href="research/keck_predictive.html" class="is-unavailable special">Learn more</a>
 										</article>
 									</section>
 									<ul class="actions">
@@ -125,13 +123,13 @@
 								</div>
 							</section>
 
-					</section>
+					</main>
 
 				<!-- Footer -->
 					<section id="footer">
 						<div class="inner">
 							<h2 class="major">Get in touch</h2>
-							<p></p>
+							<p>Interested in adaptive optics, MagAO-X, or working together? Send me a note.</p>
 							<form method="post" action="#">
 								<div class="fields">
 									<div class="field">
@@ -159,12 +157,12 @@
 									1630 E. University Blvd.<br />
 								</li>
 								<li class="icon solid fa-phone">(520) 222-8755</li>
-								<li class="icon solid fa-envelope"><a href="#">website@edens.email</a></li>
-								<li class="icon brands fa-twitter"><a href="#">twitter.com/edenacadia</a></li>
-								<li class="icon brands fa-github"><a href="#">https://github.com/edenacadia</a></li>
+								<li class="icon solid fa-envelope"><a href="mailto:website@edens.email">website@edens.email</a></li>
+								<li class="icon brands fa-twitter"><a href="https://twitter.com/edenacadia">twitter.com/edenacadia</a></li>
+								<li class="icon brands fa-github"><a href="https://github.com/edenacadia">https://github.com/edenacadia</a></li>
 							</ul>
 							<ul class="copyright">
-								<li>&copy; 2023 Eden McEwen. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								<li>&copy; 2026 Eden McEwen. All rights reserved.</li>
 							</ul>
 						</div>
 					</section>
@@ -172,12 +170,7 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="assets/js/site.js"></script>
 
 	</body>
 </html>

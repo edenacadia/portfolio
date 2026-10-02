@@ -1,18 +1,12 @@
 <!DOCTYPE HTML>
-<!--
-	Solid State by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+<html lang="en">
 	<head>
 		<title>Presentations</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/site.css" />
 	</head>
-	<body class="is-preload">
+	<body>
 
 		<!-- Page Wrapper -->
 			<div id="page-wrapper">
@@ -20,22 +14,20 @@
 				<!-- Header -->
 					<header id="header">
 						<h1><a href="/index.html">Eden McEwen</a></h1>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
+						<button class="nav-toggle" type="button" aria-controls="sidebar" aria-expanded="false"><span class="icon solid fa-bars" aria-hidden="true"></span>Menu</button>
 					</header>
 
 				<!-- Menu -->
-					<nav id="menu">
-						<div class="inner">
-							<h2>Menu</h2>
-							<ul class="links">
-								<li><a href="/index.html">Home</a></li>
-								<li><a href="/research/research.html">Research</a></li>
-								<li><a href="cv.html">CV</a></li>
-							</ul>
-							<a href="#" class="close">Close</a>
-						</div>
+					<nav id="sidebar" aria-label="Site">
+						<ul>
+							<li><a href="/index.html" data-nav="home">Home</a></li>
+							<li><a href="/research/research.html" data-nav="research">Research</a></li>
+							<li><a href="/publications.html" data-nav="publications">Publications</a></li>
+							<li><a href="/presentations.html" data-nav="presentations">Presentations</a></li>
+							<li><a href="/awards.html" data-nav="awards">Awards</a></li>
+							<li><a href="/comphoto/projects.html" data-nav="comphoto">Classwork</a></li>
+							<li><a href="#footer" data-nav="contact">Contact</a></li>
+						</ul>
 					</nav>
 
 				<!-- Wrapper -->
@@ -57,21 +49,92 @@
 
 									<h2 class="major"> Talks </h2>
 
-									<p> <span class="image left"><img src="images/presentations/AO4ELT7.jpg" alt="" /></span> 
-										<h3> Real-time PyWFS optical gain calibration using incoherent speckles </h3>
-											<p>Adaptive Optics for Extremely Large Telescopes 7 
-												<br> June 28, 2023. Avignon, France.</p> 
-									</p>
-									<a href="https://ao4elt7.sciencesconf.org/browse/speaker?authorid=1051866" class="special">Conference Website</a>
+									<article class="entry">
+										<span class="image left placeholder" aria-hidden="true"></span>
+										<h3>Comparing realtime optical gain measurement and methods on MagAO-X</h3>
+										<p class="meta"><b>E. McEwen</b>, J. Males, O. Guyon, S. Haffert et al.
+											<br> SPIE Astronomical Telescopes and Instrumentation
+											<br> July 9, 2026. Copenhagen, Denmark.</p>
+									</article>
 
-									<p> 
-										<span class="image left"><img src="images/presentations/int_symp_2023.jpeg" alt="" /></span> 
+									<article class="entry">
+										<span class="image left placeholder" aria-hidden="true"></span>
+										<h3>On-sky, real-time optical gain calibration on MagAO-X using incoherent speckles</h3>
+										<p class="meta"><b>E. McEwen</b>, J. Males, O. Guyon, S. Haffert et al.
+											<br> SPIE Astronomical Telescopes and Instrumentation
+											<br> June 17, 2024. Yokohama, Japan.</p>
+									</article>
+
+									<article class="entry">
+										<span class="image left placeholder" aria-hidden="true"></span>
+										<h3>MagAO-X: Instrument, testbed, pathfinder</h3>
+										<p class="meta"><b>E. McEwen</b>
+											<br> Center for Adaptive Optics Fall Retreat
+											<br> November 17, 2023.</p>
+									</article>
+
+									<article class="entry">
+										<span class="image left"><img src="images/presentations/AO4ELT7.jpg" alt="Eden presenting a MagAO-X talk at AO4ELT7 in Avignon" /></span>
+										<h3> Real-time PyWFS optical gain calibration using incoherent speckles </h3>
+										<p class="meta"><b>E. McEwen</b>, J. Males
+											<br> Adaptive Optics for Extremely Large Telescopes 7 
+											<br> June 28, 2023. Avignon, France.</p>
+										<a href="https://ao4elt7.sciencesconf.org/browse/speaker?authorid=1051866" class="special">Conference Website</a>
+									</article>
+
+									<article class="entry">
+										<span class="image left"><img src="images/presentations/int_symp_2023.jpeg" alt="Eden presenting MagAO-X: Making waves in 2023A at the Steward Observatory internal symposium" /></span>
 										<h3> MagAO-X: Making waves in 2023A </h3>
-										<p> Steward Observatory Internal symposium
-											<br>  </p> 
-									</p>
-									<br>
-									<br>
+										<p class="meta"> Steward Observatory Internal symposium</p>
+									</article>
+
+									<article class="entry">
+										<span class="image left placeholder" aria-hidden="true"></span>
+										<h3>Optimizing small angular separation coronagraphy for GMagAO-X with Optical Gain Calibration</h3>
+										<p class="meta"><b>E. McEwen</b>, J. Males
+											<br> Alien Earths All Hands Meeting
+											<br> February 1, 2023. Tucson, Arizona.</p>
+									</article>
+
+									<article class="entry">
+										<span class="image left placeholder" aria-hidden="true"></span>
+										<h3>&lsquo;imaka Wavelength comparisons for Ground Layer Adaptive Optics on UH 2.2m</h3>
+										<p class="meta"><b>E. McEwen</b>, J. Lu
+											<br> Summer Undergraduate Research Fellowship (SURF) Conference
+											<br> August 19, 2021. Online.</p>
+									</article>
+
+									<article class="entry">
+										<span class="image left placeholder" aria-hidden="true"></span>
+										<h3>Wind profiler comparison using &rsquo;imaka telemetry</h3>
+										<p class="meta"><b>E. McEwen</b>, M. Chun
+											<br> Center for Adaptive Optics Fall Retreat
+											<br> October 28, 2020. Online.</p>
+									</article>
+
+									<article class="entry">
+										<span class="image left placeholder" aria-hidden="true"></span>
+										<h3>Tracking Turbulence: Preliminary results of wind profiler comparison using &rsquo;imaka telemetry</h3>
+										<p class="meta"><b>E. McEwen</b>, M. Chun, R. Dungee
+											<br> Institute for Astronomy REU Talks
+											<br> July 30, 2020. Online.</p>
+									</article>
+
+									<article class="entry">
+										<span class="image left placeholder" aria-hidden="true"></span>
+										<h3>Preliminary results from an adaptive optics test bench</h3>
+										<p class="meta"><b>E. McEwen</b>, J. Lu
+											<br> Conference for Undergraduate Women in Physics
+											<br> January 17, 2020. Irvine, CA.</p>
+									</article>
+
+									<article class="entry">
+										<span class="image left placeholder" aria-hidden="true"></span>
+										<h3>The real time controller for a compact adaptive optics system</h3>
+										<p class="meta"><b>E. McEwen</b>, K. Wallace, G. Serabyn
+											<br> JPL Student Faculty Program presentations
+											<br> August 20, 2019. Pasadena, CA.</p>
+									</article>
 								</div>
 							</div>
 
@@ -79,15 +142,61 @@
 								<div class="inner">
 									<h2 class="major"> Posters </h2>
 
-									<p><span class="image left"><img src="images/presentations/conf_gmto.jpg" alt="" /></span> 
+									<article class="entry">
+										<span class="image left"><img src="images/presentations/2026_spie_betapic.png" alt="Eden with her MagAO-X beta Pictoris b poster at SPIE 2026 in Copenhagen" /></span>
+										<h3>MagAO-X visible imaging of &beta;-pic b</h3>
+										<p class="meta"><b>E. McEwen</b>, J. Males, L. Pearce, et al.
+										<br> SPIE Astronomical Telescopes and Instrumentation
+										<br> July 5th 2026. Copenhagen, Denmark.</p>
+									</article>
+
+									<article class="entry">
+										<span class="image left placeholder" aria-hidden="true"></span>
+										<h3>MagAO-X visible imaging of &beta;-pic b</h3>
+										<p class="meta"><b>E. McEwen</b>, J. Males, L. Pearce, et al.
+											<br> Sagan Summer Workshop
+											<br> July 21st 2025. Pasadena, CA.</p>
+									</article>
+
+									<article class="entry">
+										<span class="image left placeholder" aria-hidden="true"></span>
+										<h3>Ground-based Observatory Synergies with HWO</h3>
+										<p class="meta"><b>E. McEwen</b>, B. Sitarski
+											<br> NASA HWO October Meeting
+											<br> October 22, 2024. Rochester, NY.</p>
+									</article>
+
+									<article class="entry">
+										<span class="image left"><img src="images/presentations/conf_gmto.jpg" alt="Eden with her MagAO-X poster at the Giant Magellan Telescope Community Science Meeting" /></span>
 										<h3> Real-time wavefront sensor calibration for coronagraphic imaging</h3>
-											<p> <b>Giant Magellan Telescope Community Science Meeting</b>
-												<br> September 6, 2023. Washington D.C. </p> 
-									</p>
+										<p class="meta"><b>E. McEwen</b>, J. Males, O. Guyon
+											<br> <b>Giant Magellan Telescope Community Science Meeting</b>
+											<br> September 6, 2023. Washington D.C. </p>
+									</article>
 
-									
-	
+									<article class="entry">
+										<span class="image left"><img src="images/presentations/present.png" alt="Eden with her wavefront profiling poster at SPIE 2022" /></span>
+										<h3>Wavefront profiling via correlation of GLAO open loop telemetry</h3>
+										<p class="meta"><b>E. McEwen</b>, R. Dungee, M. Chun, J. Lu, O. Lai, C. Baranec
+											<br> SPIE Astronomical Telescopes and Instrumentation Conference
+											<br> August 29, 2022. Montreal, Canada.</p>
+									</article>
 
+									<article class="entry">
+										<span class="image left placeholder" aria-hidden="true"></span>
+										<h3>Demonstrating Predictive Wavefront Control at Keck II</h3>
+										<p class="meta"><b>E. McEwen</b>, R. Jensen-Clem, J. Graham, D. Mawet, P. Wizinowich, S. Cetre
+											<br> 223 AAS
+											<br> January 8, 2019. Seattle, WA.</p>
+									</article>
+
+									<article class="entry">
+										<span class="image left"><img src="images/presentations/2018poster.jpeg" alt="Eden and Rebecca Jensen-Clem with the AOSE poster at APSIS 2018" /></span>
+										<h3>Demonstrating Predictive Wavefront Control at Keck II: Construction of AOSE</h3>
+										<p class="meta"><b>E. McEwen</b>, S. Dehghani, A. Sengupta, R. Jensen-Clem
+											<br> Astronomy Poster Summer Intern Symposium (APSIS)
+											<br> August 10, 2018. Berkeley, CA.</p>
+									</article>
 								</div>
 							</div>
 
@@ -97,7 +206,7 @@
 				<section id="footer">
 					<div class="inner">
 						<h2 class="major">Get in touch</h2>
-						<p></p>
+						<p>Interested in adaptive optics, MagAO-X, or working together? Send me a note.</p>
 						<form method="post" action="#">
 							<div class="fields">
 								<div class="field">
@@ -125,12 +234,12 @@
 								1630 E. University Blvd.<br />
 							</li>
 							<li class="icon solid fa-phone">(520) 222-8755</li>
-							<li class="icon solid fa-envelope"><a href="#">website@edens.email</a></li>
-							<li class="icon brands fa-twitter"><a href="#">twitter.com/edenacadia</a></li>
-							<li class="icon brands fa-github"><a href="#">https://github.com/edenacadia</a></li>
+							<li class="icon solid fa-envelope"><a href="mailto:website@edens.email">website@edens.email</a></li>
+							<li class="icon brands fa-twitter"><a href="https://twitter.com/edenacadia">twitter.com/edenacadia</a></li>
+							<li class="icon brands fa-github"><a href="https://github.com/edenacadia">https://github.com/edenacadia</a></li>
 						</ul>
 						<ul class="copyright">
-							<li>&copy; 2023 Eden McEwen. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							<li>&copy; 2026 Eden McEwen. All rights reserved.</li>
 						</ul>
 					</div>
 				</section>
@@ -138,12 +247,7 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="assets/js/site.js"></script>
 
 	</body>
 </html>
